@@ -1,14 +1,7 @@
-# Changelog
+## <small>1.0.1 (2021-01-15)</small>
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+* feat: generate awesome list from stars ([ef03320](https://github.com/simonecorsi/mawesome/commit/ef03320))
+* Initial commit ([dcd26ff](https://github.com/simonecorsi/mawesome/commit/dcd26ff))
 
-## 1.0.0-0 (2021-01-09)
 
 
-### Features
-
-* generating awesome list from user star 5f9ce51
-
-# Changelog
-
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.

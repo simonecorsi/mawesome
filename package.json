@@ -1,0 +1,70 @@
+{
+  "name": "mawesome",
+  "version": "1.0.0-0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "style:lint": "eslint src --ext .ts",
+    "style:prettier": "prettier \"src/**/*.ts\" --list-different --write",
+    "build": "./node_modules/.bin/ncc build src/index.ts -o ./",
+    "dev": "ts-node-dev src/index.ts",
+    "prerelease": "npm run build",
+    "release": "HUSKY_SKIP_HOOKS=1 standard-version",
+    "prenext": "npm run build",
+    "next": "HUSKY_SKIP_HOOKS=1 standard-version --prerelease"
+  },
+  "keywords": [
+    "github",
+    "action",
+    "awesome",
+    "list",
+    "generator",
+    "typescript",
+    "javascript"
+  ],
+  "author": "Simone Corsi",
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@octokit/rest": "^18.0.12",
+    "@octokit/types": "^6.2.1",
+    "@types/ejs": "^3.0.5",
+    "@types/got": "^9.6.11",
+    "@types/node": "^14.14.5",
+    "@typescript-eslint/eslint-plugin": "^4.6.0",
+    "@typescript-eslint/parser": "^4.6.0",
+    "@vercel/ncc": "^0.26.2",
+    "ava": "^3.8.2",
+    "benchmark": "^2.1.4",
+    "conventional-gitlab-releaser": "^4.0.1",
+    "cz-conventional-changelog": "^3.2.0",
+    "eslint": "^7.17.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.2",
+    "markdown-toc": "^1.2.0",
+    "ninos": "^3.0.0",
+    "nyc": "^15.0.1",
+    "prettier": "^2.0.5",
+    "standard-version": "^9.0.0",
+    "ts-node-dev": "^1.1.1",
+    "typescript": "^4.1.3"
+  },
+  "dependencies": {
+    "@actions/exec": "^1.0.4",
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "got": "^11.8.1",
+    "remark": "^13.0.0",
+    "remark-toc": "^7.0.0"
+  },
+  "volta": {
+    "node": "14.15.4"
+  }
+}

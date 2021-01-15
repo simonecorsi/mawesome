@@ -1,0 +1,5 @@
+name: 'Mawesome'
+description: 'Generate awesome list from user starred repositories'
+runs:
+  using: 'node14'
+  main: 'dist/index.js'

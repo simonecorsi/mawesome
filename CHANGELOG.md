@@ -1,5 +1,12 @@
+## <small>1.0.12 (2021-01-16)</small>
+
+* feat: git user now is action ([83db82b](https://github.com/simonecorsi/mawesome/commit/83db82b))
+
+
+
 ## <small>1.0.11 (2021-01-16)</small>
 
+* chore(release): v1.0.11 ([b5ae554](https://github.com/simonecorsi/mawesome/commit/b5ae554))
 * fix: added required label ([be35c87](https://github.com/simonecorsi/mawesome/commit/be35c87))
 
 
@@ -22,13 +29,6 @@
 
 * chore(release): v1.0.8 ([f8cb98f](https://github.com/simonecorsi/mawesome/commit/f8cb98f))
 * fix: bad quotes in url ([4abcb32](https://github.com/simonecorsi/mawesome/commit/4abcb32))
-
-
-
-## <small>1.0.7 (2021-01-16)</small>
-
-* chore(release): v1.0.7 ([3c133b8](https://github.com/simonecorsi/mawesome/commit/3c133b8))
-* feat: better errors ([be667ed](https://github.com/simonecorsi/mawesome/commit/be667ed))
 
 
 

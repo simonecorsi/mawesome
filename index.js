@@ -21307,11 +21307,9 @@ exports.default = new (class Git {
         this.createTag = (tag) => this.exec(`tag -a ${tag} -m "${tag}"`);
         const githubToken = core.getInput('github-token', { required: true });
         core.setSecret(githubToken);
-        const gitUserName = core.getInput('git-user-name');
-        const gitUserEmail = core.getInput('git-user-email');
         // Set config
-        this.config('user.name', gitUserName);
-        this.config('user.email', gitUserEmail);
+        this.config('user.name', 'GitHub Actions');
+        this.config('user.email', 'actions@users.noreply.github.com');
         // Update the origin
         this.updateOrigin(`https://x-access-token:${githubToken}@github.com/${GITHUB_REPOSITORY}.git`);
     }

@@ -54,12 +54,7 @@ export default new (class Git {
   commit = (message: string) => this.exec(`commit -m "${message}"`);
 
   pull = async () => {
-    const args = ['pull', 'origin', branch];
-
-    // Check if the repo is unshallow
-    if (await this.isShallow()) {
-      args.push('--unshallow');
-    }
+    const args = ['pull'];
 
     args.push('--tags');
     args.push(core.getInput('git-pull-method'));
@@ -68,14 +63,6 @@ export default new (class Git {
   };
 
   push = () => this.exec(`push origin ${branch} --follow-tags`);
-
-  isShallow = async () => {
-    const isShallow: string = await this.exec(
-      'rev-parse --is-shallow-repository'
-    );
-
-    return isShallow.trim().replace('\n', '') === 'true';
-  };
 
   updateOrigin = (repo: string) => this.exec(`remote set-url origin ${repo}`);
 

@@ -1,5 +1,12 @@
+## <small>1.0.24 (2021-01-16)</small>
+
+* fix: git push ([c8fb3f4](https://github.com/simonecorsi/mawesome/commit/c8fb3f4))
+
+
+
 ## <small>1.0.23 (2021-01-16)</small>
 
+* chore(release): v1.0.23 ([f41befa](https://github.com/simonecorsi/mawesome/commit/f41befa))
 * docs: added authors ([3de0e12](https://github.com/simonecorsi/mawesome/commit/3de0e12))
 
 

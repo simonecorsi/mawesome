@@ -21289,20 +21289,12 @@ exports.default = new (class Git {
         this.add = (file) => this.exec(`add ${file}`);
         this.commit = (message) => this.exec(`commit -m "${message}"`);
         this.pull = () => __awaiter(this, void 0, void 0, function* () {
-            const args = ['pull', 'origin', branch];
-            // Check if the repo is unshallow
-            if (yield this.isShallow()) {
-                args.push('--unshallow');
-            }
+            const args = ['pull'];
             args.push('--tags');
             args.push(core.getInput('git-pull-method'));
             return this.exec(args.join(' '));
         });
         this.push = () => this.exec(`push origin ${branch} --follow-tags`);
-        this.isShallow = () => __awaiter(this, void 0, void 0, function* () {
-            const isShallow = yield this.exec('rev-parse --is-shallow-repository');
-            return isShallow.trim().replace('\n', '') === 'true';
-        });
         this.updateOrigin = (repo) => this.exec(`remote set-url origin ${repo}`);
         this.createTag = (tag) => this.exec(`tag -a ${tag} -m "${tag}"`);
         const githubToken = core.getInput('github-token', { required: true });

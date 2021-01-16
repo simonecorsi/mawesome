@@ -5,13 +5,9 @@ import * as exec from '@actions/exec';
 
 const { GITHUB_REPOSITORY, GITHUB_REF } = process.env;
 
-const IS_TEST = process.env.NODE_ENV === 'test';
-
 const branch = GITHUB_REF?.replace('refs/heads/', '');
 
 export default new (class Git {
-  commandsRun: string[] = [];
-
   constructor() {
     const githubToken = core.getInput('github-token', { required: true });
     core.setSecret(githubToken);
@@ -76,8 +72,6 @@ export default new (class Git {
   push = () => this.exec(`push origin ${branch} --follow-tags`);
 
   isShallow = async () => {
-    if (IS_TEST) return false;
-
     const isShallow: string = await this.exec(
       'rev-parse --is-shallow-repository'
     );

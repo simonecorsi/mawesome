@@ -119,7 +119,7 @@ export async function run(): Promise<any> {
     await main();
     process.exit(0);
   } catch (error) {
-    core.error('#catchAll:');
+    core.error('#run:');
     core.error(error);
     process.exit(1);
   }

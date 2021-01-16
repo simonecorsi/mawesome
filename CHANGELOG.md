@@ -1,6 +1,13 @@
+## <small>1.0.21 (2021-01-16)</small>
+
+* fix: added latest tag at release ([6b8b525](https://github.com/simonecorsi/mawesome/commit/6b8b525))
+
+
+
 ## <small>1.0.20 (2021-01-16)</small>
 
 * chore(action.yml): updated ([7bdae48](https://github.com/simonecorsi/mawesome/commit/7bdae48))
+* chore(release): v1.0.20 ([738785e](https://github.com/simonecorsi/mawesome/commit/738785e))
 
 
 
@@ -22,14 +29,6 @@
 
 * chore(release): v1.0.17 ([380a0ec](https://github.com/simonecorsi/mawesome/commit/380a0ec))
 * fix: exit condition ([914a115](https://github.com/simonecorsi/mawesome/commit/914a115))
-
-
-
-## <small>1.0.16 (2021-01-16)</small>
-
-* chore: moved helpers in own file ([29bcf41](https://github.com/simonecorsi/mawesome/commit/29bcf41))
-* chore(release): v1.0.16 ([f8cb892](https://github.com/simonecorsi/mawesome/commit/f8cb892))
-* fix: if tempalte fail should exit(1) ([ee824d1](https://github.com/simonecorsi/mawesome/commit/ee824d1))
 
 
 

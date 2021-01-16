@@ -29,7 +29,7 @@ const renderer = async (data: any, templateString = MD_TEMPLATE) => {
   } catch (error) {
     core.error('#renderer');
     core.error(error);
-    return '';
+    process.exit(1);
   }
 };
 

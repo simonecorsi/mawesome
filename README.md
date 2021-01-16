@@ -18,7 +18,7 @@ The github workflow token is mandatory
 
 The Personal API Access Token is mandatory to fetch stars from the API without incurring in Rate Limits.
 
-You'll have to generate a [personal api token][https://github.com/settings/tokens/new] and then add 
+You'll have to generate a [personal api token](https://github.com/settings/tokens/new) and then add 
 
 ## Example workflow
 

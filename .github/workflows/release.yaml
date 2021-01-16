@@ -30,7 +30,6 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           git-message: 'chore(release): {version}'
-          tag-prefix: ''
           preset: ''
 
       - name: Create github Release

@@ -21289,7 +21289,7 @@ exports.default = new (class Git {
         this.add = (file) => this.exec(`add ${file}`);
         this.commit = (message) => this.exec(`commit -m "${message}"`);
         this.pull = () => __awaiter(this, void 0, void 0, function* () {
-            const args = ['pull'];
+            const args = ['pull', 'origin', branch];
             // Check if the repo is unshallow
             if (yield this.isShallow()) {
                 args.push('--unshallow');
@@ -21310,6 +21310,7 @@ exports.default = new (class Git {
         // Set config
         this.config('user.name', 'GitHub Actions');
         this.config('user.email', 'actions@users.noreply.github.com');
+        this.config('pull.rebase', 'false');
         // Update the origin
         this.updateOrigin(`https://x-access-token:${githubToken}@github.com/${GITHUB_REPOSITORY}.git`);
     }

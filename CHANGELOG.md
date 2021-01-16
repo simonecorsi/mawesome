@@ -1,5 +1,12 @@
+## <small>1.0.22 (2021-01-16)</small>
+
+* fix: git pull strategy ([edb4a38](https://github.com/simonecorsi/mawesome/commit/edb4a38))
+
+
+
 ## <small>1.0.21 (2021-01-16)</small>
 
+* chore(release): v1.0.21 ([3c3ab0a](https://github.com/simonecorsi/mawesome/commit/3c3ab0a))
 * fix: added latest tag at release ([6b8b525](https://github.com/simonecorsi/mawesome/commit/6b8b525))
 
 
@@ -22,13 +29,6 @@
 
 * chore(release): v1.0.18 ([d82b715](https://github.com/simonecorsi/mawesome/commit/d82b715))
 * docs: readme updated ([192aa8a](https://github.com/simonecorsi/mawesome/commit/192aa8a))
-
-
-
-## <small>1.0.17 (2021-01-16)</small>
-
-* chore(release): v1.0.17 ([380a0ec](https://github.com/simonecorsi/mawesome/commit/380a0ec))
-* fix: exit condition ([914a115](https://github.com/simonecorsi/mawesome/commit/914a115))
 
 
 

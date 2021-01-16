@@ -22,8 +22,7 @@ import type {
 const REPO_USERNAME = process.env.GITHUB_REPOSITORY?.split('/')[0];
 const OUTPUT_FILENAME: string = core.getInput('output-filename') || 'README.md';
 
-const USERNAME = process.env.GITHUB_ACTOR || 'simonecorsi';
-const API_STARRED_URL = `'https://api.github.com/users/${REPO_USERNAME}/starred'`;
+const API_STARRED_URL = `https://api.github.com/users/${REPO_USERNAME}/starred`;
 
 const renderer = async (data: any) => {
   try {
@@ -99,7 +98,7 @@ export async function main(): Promise<any> {
   );
 
   const rendered = await renderer({
-    username: USERNAME,
+    username: REPO_USERNAME,
     stars: Object.entries(sortedByLanguages),
     updatedAt: Date.now(),
   });

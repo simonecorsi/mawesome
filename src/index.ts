@@ -1,5 +1,5 @@
 import dotnenv from 'dotenv';
-import fs from 'fs/promises';
+import fs from 'fs';
 
 import ejs from 'ejs';
 import remark from 'remark';
@@ -8,6 +8,8 @@ import GithubApi from './api';
 import link from './link';
 import git from './git';
 import core from '@actions/core';
+
+const fsp = fs.promises;
 
 import type {
   SortedLanguageList,
@@ -26,7 +28,7 @@ const API_STARRED_URL = `'https://api.github.com/users/${REPO_USERNAME}/starred'
 
 const renderer = async (data: any) => {
   try {
-    const MD_TEMPLATE = await fs.readFile('fixtures/template.md.ejs', 'utf-8');
+    const MD_TEMPLATE = await fsp.readFile('fixtures/template.md.ejs', 'utf-8');
     return ejs.render(MD_TEMPLATE, data);
   } catch (error) {
     core.error(error);
@@ -45,7 +47,7 @@ async function apiGetStar(url: string): Promise<ApiGetStarResponse> {
   const { headers, body }: any = await (async () => {
     if (!IS_PROD)
       return JSON.parse(
-        await fs.readFile('fixtures/stars-response.json', 'utf-8')
+        await fsp.readFile('fixtures/stars-response.json', 'utf-8')
       );
     return GithubApi.get(url);
   })();
@@ -114,7 +116,7 @@ export async function main(): Promise<any> {
 
   const markdown: string = await generateMd(rendered);
 
-  await fs.writeFile(OUTPUT_FILENAME, markdown);
+  await fsp.writeFile(OUTPUT_FILENAME, markdown);
 
   await git.add(OUTPUT_FILENAME);
 

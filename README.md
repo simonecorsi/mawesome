@@ -1,6 +1,8 @@
-# mawesome
+# My Awesome list
 
 This action query the github api to get starred list of the user and then generates a list ordered by languages. 
+
+You can see an example of the output at my own [simonecorsi/awesome](https://github.com/simonecorsi/awesome)
 
 ## Setup
 
@@ -34,7 +36,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Awesome generator
-        uses: simonecorsi/mawesome@main
+        uses: simonecorsi/mawesome@lastest
         with:
           api-token: ${{ secrets.API_TOKEN }}
           github-token: ${{ secrets.GITHUB_TOKEN }}

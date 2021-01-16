@@ -39,3 +39,6 @@ jobs:
           tag_name: ${{ steps.changelog.outputs.tag }}
           release_name: ${{ steps.changelog.outputs.tag }}
           body: ${{ steps.changelog.outputs.changelog }}
+
+      - name: Latest tag
+        uses: EndBug/latest-tag@v1.4.0

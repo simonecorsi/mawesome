@@ -18,15 +18,13 @@ import type {
 
 const fsp = fs.promises;
 
-const REPO_USERNAME = process.env.GITHUB_REPOSITORY?.split('/')[0];
 const OUTPUT_FILENAME: string = core.getInput('output-filename') || 'README.md';
-
-const API_STARRED_URL = `https://api.github.com/users/${REPO_USERNAME}/starred`;
+const REPO_USERNAME = process.env.GITHUB_REPOSITORY?.split('/')[0];
+const API_STARRED_URL = `${process.env.GITHUB_API_URL}/users/${REPO_USERNAME}/starred`;
 
 const renderer = async (data: any) => {
   try {
-    const p = path.resolve(process.cwd(), 'template.ejs');
-    const MD_TEMPLATE = await fsp.readFile(p, 'utf-8');
+    const MD_TEMPLATE = await fsp.readFile('./template.ejs', 'utf-8');
     return ejs.render(MD_TEMPLATE, data);
   } catch (error) {
     core.error('#renderer');

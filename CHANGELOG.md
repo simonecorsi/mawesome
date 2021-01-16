@@ -1,6 +1,13 @@
+## <small>1.0.3 (2021-01-16)</small>
+
+* fix(action.yml): output file now correct path ([0ffe529](https://github.com/simonecorsi/mawesome/commit/0ffe529))
+
+
+
 ## <small>1.0.2 (2021-01-16)</small>
 
 * chore(action.yml): node downgrated to 12 ([e98d8dc](https://github.com/simonecorsi/mawesome/commit/e98d8dc))
+* chore(release): v1.0.2 ([140194e](https://github.com/simonecorsi/mawesome/commit/140194e))
 
 
 

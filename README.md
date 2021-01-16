@@ -2,34 +2,38 @@
 
 This action query the github api to get starred list of the user and then generates a list ordered by languages. 
 
+## Setup
+
+To use this action you have to create your own repository (eg: `yourname/awesome`), then create a new empty action in it and then use the [example workflow](#example-workflow) below as a starting point.
+
 ## Inputs
 
 ### `github-token`
 
-The github workflow token
+The github workflow token is mandatory 
 
 ### `api-token`
 
-Personal API Access Token to fetch stars from the API without incurring in Rate Limits.
+The Personal API Access Token is mandatory to fetch stars from the API without incurring in Rate Limits.
 
-You'll have to set this into the secrets yourself.
+You'll have to generate a [personal api token][https://github.com/settings/tokens/new] and then add 
 
-## Outputs
-
-Output the generated list in the project `README.md`
-
-## Example usage
+## Example workflow
 
 ```yml
-name: Generate Awesome List
-on: [workflow_dispatch]
+name: Update awesome list
+
+on: 
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Run a one-line script
+      - name: Awesome generator
         uses: simonecorsi/mawesome@main
         with:
           api-token: ${{ secrets.API_TOKEN }}

@@ -1,5 +1,12 @@
+## <small>1.0.20 (2021-01-16)</small>
+
+* chore(action.yml): updated ([7bdae48](https://github.com/simonecorsi/mawesome/commit/7bdae48))
+
+
+
 ## <small>1.0.19 (2021-01-16)</small>
 
+* chore(release): v1.0.19 ([7a46627](https://github.com/simonecorsi/mawesome/commit/7a46627))
 * fix: added missing info for action publishing ([3703b66](https://github.com/simonecorsi/mawesome/commit/3703b66))
 
 
@@ -23,13 +30,6 @@
 * chore: moved helpers in own file ([29bcf41](https://github.com/simonecorsi/mawesome/commit/29bcf41))
 * chore(release): v1.0.16 ([f8cb892](https://github.com/simonecorsi/mawesome/commit/f8cb892))
 * fix: if tempalte fail should exit(1) ([ee824d1](https://github.com/simonecorsi/mawesome/commit/ee824d1))
-
-
-
-## <small>1.0.15 (2021-01-16)</small>
-
-* chore(release): v1.0.15 ([03e1973](https://github.com/simonecorsi/mawesome/commit/03e1973))
-* fix: template cannot be loaded from ejs file ([78c0f37](https://github.com/simonecorsi/mawesome/commit/78c0f37))
 
 
 

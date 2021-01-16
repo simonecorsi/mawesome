@@ -21527,7 +21527,7 @@ function main() {
         const markdown = yield generateMd(rendered);
         yield promises_1.default.writeFile(OUTPUT_FILENAME, markdown);
         yield git_1.default.add(OUTPUT_FILENAME);
-        yield git_1.default.commit(`chore(${OUTPUT_FILENAME}): updated list`);
+        yield git_1.default.commit(`chore(${OUTPUT_FILENAME}): updated ${OUTPUT_FILENAME}`);
         yield git_1.default.push();
     });
 }

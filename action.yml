@@ -5,5 +5,5 @@ inputs:
     description: 'Github token'
     default: ${{ github.token }}
 runs:
-  using: 'node14'
+  using: 'node12'
   main: 'dist/index.js'

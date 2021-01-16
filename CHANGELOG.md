@@ -1,5 +1,12 @@
+## <small>1.0.19 (2021-01-16)</small>
+
+* fix: added missing info for action publishing ([3703b66](https://github.com/simonecorsi/mawesome/commit/3703b66))
+
+
+
 ## <small>1.0.18 (2021-01-16)</small>
 
+* chore(release): v1.0.18 ([d82b715](https://github.com/simonecorsi/mawesome/commit/d82b715))
 * docs: readme updated ([192aa8a](https://github.com/simonecorsi/mawesome/commit/192aa8a))
 
 
@@ -23,13 +30,6 @@
 
 * chore(release): v1.0.15 ([03e1973](https://github.com/simonecorsi/mawesome/commit/03e1973))
 * fix: template cannot be loaded from ejs file ([78c0f37](https://github.com/simonecorsi/mawesome/commit/78c0f37))
-
-
-
-## <small>1.0.14 (2021-01-16)</small>
-
-* chore(release): v1.0.14 ([91de25f](https://github.com/simonecorsi/mawesome/commit/91de25f))
-* fix: somehow runner wont see template ([808c35c](https://github.com/simonecorsi/mawesome/commit/808c35c))
 
 
 

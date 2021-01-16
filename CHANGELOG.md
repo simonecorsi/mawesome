@@ -1,20 +1,17 @@
+## <small>1.0.25 (2021-01-16)</small>
+
+* fix: should fix unshallow repo ([17c5d85](https://github.com/simonecorsi/mawesome/commit/17c5d85))
+
+
+
 ## <small>1.0.24 (2021-01-16)</small>
 
-* fix: git push ([c8fb3f4](https://github.com/simonecorsi/mawesome/commit/c8fb3f4))
-
-
-
-## <small>1.0.23 (2021-01-16)</small>
-
-* chore(release): v1.0.23 ([f41befa](https://github.com/simonecorsi/mawesome/commit/f41befa))
-* docs: added authors ([3de0e12](https://github.com/simonecorsi/mawesome/commit/3de0e12))
-
-
-
-## <small>1.0.22 (2021-01-16)</small>
-
 * chore(release): v1.0.22 ([3f66738](https://github.com/simonecorsi/mawesome/commit/3f66738))
+* chore(release): v1.0.23 ([f41befa](https://github.com/simonecorsi/mawesome/commit/f41befa))
+* chore(release): v1.0.24 ([9badeaf](https://github.com/simonecorsi/mawesome/commit/9badeaf))
 * fix: git pull strategy ([edb4a38](https://github.com/simonecorsi/mawesome/commit/edb4a38))
+* fix: git push ([c8fb3f4](https://github.com/simonecorsi/mawesome/commit/c8fb3f4))
+* docs: added authors ([3de0e12](https://github.com/simonecorsi/mawesome/commit/3de0e12))
 
 
 

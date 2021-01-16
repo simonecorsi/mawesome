@@ -21265,6 +21265,10 @@ const { GITHUB_REPOSITORY, GITHUB_REF } = process.env;
 const branch = GITHUB_REF === null || GITHUB_REF === void 0 ? void 0 : GITHUB_REF.replace('refs/heads/', '');
 exports.default = new (class Git {
     constructor() {
+        this.isShallow = () => __awaiter(this, void 0, void 0, function* () {
+            const isShallow = yield this.exec('rev-parse --is-shallow-repository');
+            return isShallow.trim().replace('\n', '') === 'true';
+        });
         this.exec = (command) => {
             return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
                 let execOutput = '';
@@ -21290,6 +21294,10 @@ exports.default = new (class Git {
         this.commit = (message) => this.exec(`commit -m "${message}"`);
         this.pull = () => __awaiter(this, void 0, void 0, function* () {
             const args = ['pull'];
+            // Check if the repo is unshallow
+            if (yield this.isShallow()) {
+                args.push('--unshallow');
+            }
             args.push('--tags');
             args.push(core.getInput('git-pull-method'));
             return this.exec(args.join(' '));

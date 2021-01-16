@@ -23,6 +23,14 @@ export default new (class Git {
     );
   }
 
+  isShallow = async () => {
+    const isShallow: string = await this.exec(
+      'rev-parse --is-shallow-repository'
+    );
+
+    return isShallow.trim().replace('\n', '') === 'true';
+  };
+
   exec = (command: string): Promise<string> => {
     return new Promise(async (resolve, reject) => {
       let execOutput = '';
@@ -55,6 +63,11 @@ export default new (class Git {
 
   pull = async () => {
     const args = ['pull'];
+
+    // Check if the repo is unshallow
+    if (await this.isShallow()) {
+      args.push('--unshallow');
+    }
 
     args.push('--tags');
     args.push(core.getInput('git-pull-method'));

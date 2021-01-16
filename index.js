@@ -21229,7 +21229,7 @@ exports.default = got_1.default.extend({
 
 "use strict";
 
-// original content by: github.com/TriPSs/conventional-changelog-action/blob/master/src/helpers/git.js
+// original content by: https://github.com/TriPSs/conventional-changelog-action/blob/master/src/helpers/git.js
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
     Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
@@ -21381,9 +21381,8 @@ function renderer(data, templateString = template_1.default) {
             return ejs_1.default.render(templateString, data);
         }
         catch (error) {
-            core.error('#renderer');
-            core.error(error);
-            process.exit(1);
+            core.setFailed(`#renderer: ${error}`);
+            return '';
         }
     });
 }
@@ -21406,7 +21405,7 @@ let links = {
 };
 function paginate() {
     return __awaiter(this, void 0, void 0, function* () {
-        if (!isLastPage(links))
+        if (isLastPage(links))
             return null;
         const r = yield apiGetStar(links.next);
         links = r.links;
@@ -21515,20 +21514,15 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             yield main();
-            process.exit(0);
         }
         catch (error) {
-            core.error('#run:');
-            core.error(error);
-            process.exit(1);
+            core.setFailed(`#run: ${error}`);
         }
     });
 }
 exports.run = run;
 const catchAll = (info) => {
-    core.error('#catchAll');
-    core.error(info);
-    process.exit(1);
+    core.setFailed(`#catchAll: ${info}`);
 };
 process.on('unhandledRejection', catchAll);
 process.on('uncaughtException', catchAll);

@@ -1,6 +1,13 @@
+## <small>1.0.17 (2021-01-16)</small>
+
+* fix: exit condition ([914a115](https://github.com/simonecorsi/mawesome/commit/914a115))
+
+
+
 ## <small>1.0.16 (2021-01-16)</small>
 
 * chore: moved helpers in own file ([29bcf41](https://github.com/simonecorsi/mawesome/commit/29bcf41))
+* chore(release): v1.0.16 ([f8cb892](https://github.com/simonecorsi/mawesome/commit/f8cb892))
 * fix: if tempalte fail should exit(1) ([ee824d1](https://github.com/simonecorsi/mawesome/commit/ee824d1))
 
 

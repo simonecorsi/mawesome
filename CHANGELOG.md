@@ -1,5 +1,12 @@
+## <small>1.0.4 (2021-01-16)</small>
+
+* fix(index.ts): fs promise fixed path ([0df413e](https://github.com/simonecorsi/mawesome/commit/0df413e))
+
+
+
 ## <small>1.0.3 (2021-01-16)</small>
 
+* chore(release): v1.0.3 ([d973275](https://github.com/simonecorsi/mawesome/commit/d973275))
 * fix(action.yml): output file now correct path ([0ffe529](https://github.com/simonecorsi/mawesome/commit/0ffe529))
 
 

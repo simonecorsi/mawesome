@@ -21437,7 +21437,7 @@ var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.run = exports.main = exports.generateMd = void 0;
 const dotenv_1 = __importDefault(__nccwpck_require__(2437));
-const promises_1 = __importDefault(__nccwpck_require__(9225));
+const fs_1 = __importDefault(__nccwpck_require__(5747));
 const ejs_1 = __importDefault(__nccwpck_require__(8431));
 const remark_1 = __importDefault(__nccwpck_require__(2081));
 const remark_toc_1 = __importDefault(__nccwpck_require__(5096));
@@ -21445,6 +21445,7 @@ const api_1 = __importDefault(__nccwpck_require__(8229));
 const link_1 = __importDefault(__nccwpck_require__(9338));
 const git_1 = __importDefault(__nccwpck_require__(6350));
 const core_1 = __importDefault(__nccwpck_require__(2186));
+const fsp = fs_1.default.promises;
 const REPO_USERNAME = (_a = process.env.GITHUB_REPOSITORY) === null || _a === void 0 ? void 0 : _a.split('/')[0];
 const OUTPUT_FILENAME = core_1.default.getInput('output-filename') || 'README.md';
 const IS_PROD = process.env.NODE_ENV === 'production';
@@ -21452,7 +21453,7 @@ const USERNAME = process.env.GITHUB_ACTOR || 'simonecorsi';
 const API_STARRED_URL = `'https://api.github.com/users/${REPO_USERNAME}/starred'`;
 const renderer = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const MD_TEMPLATE = yield promises_1.default.readFile('fixtures/template.md.ejs', 'utf-8');
+        const MD_TEMPLATE = yield fsp.readFile('fixtures/template.md.ejs', 'utf-8');
         return ejs_1.default.render(MD_TEMPLATE, data);
     }
     catch (error) {
@@ -21468,7 +21469,7 @@ function apiGetStar(url) {
     return __awaiter(this, void 0, void 0, function* () {
         const { headers, body } = yield (() => __awaiter(this, void 0, void 0, function* () {
             if (!IS_PROD)
-                return JSON.parse(yield promises_1.default.readFile('fixtures/stars-response.json', 'utf-8'));
+                return JSON.parse(yield fsp.readFile('fixtures/stars-response.json', 'utf-8'));
             return api_1.default.get(url);
         }))();
         return {
@@ -21525,7 +21526,7 @@ function main() {
             updatedAt: Date.now(),
         });
         const markdown = yield generateMd(rendered);
-        yield promises_1.default.writeFile(OUTPUT_FILENAME, markdown);
+        yield fsp.writeFile(OUTPUT_FILENAME, markdown);
         yield git_1.default.add(OUTPUT_FILENAME);
         yield git_1.default.commit(`chore(${OUTPUT_FILENAME}): updated ${OUTPUT_FILENAME}`);
         yield git_1.default.push();
@@ -21617,14 +21618,6 @@ module.exports = require("events");;
 
 "use strict";
 module.exports = require("fs");;
-
-/***/ }),
-
-/***/ 9225:
-/***/ ((module) => {
-
-"use strict";
-module.exports = require("fs/promises");;
 
 /***/ }),
 

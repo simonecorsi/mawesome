@@ -21318,7 +21318,7 @@ exports.default = new (class Git {
 
 /***/ }),
 
-/***/ 6144:
+/***/ 3015:
 /***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
 
 "use strict";
@@ -21356,31 +21356,38 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.run = exports.main = exports.generateMd = void 0;
-const fs_1 = __importDefault(__nccwpck_require__(5747));
+exports.pushNewFile = exports.OUTPUT_FILENAME = exports.generateMd = exports.paginate = exports.API_STARRED_URL = exports.REPO_USERNAME = exports.apiGetStar = exports.renderer = exports.isLastPage = exports.wait = void 0;
 const ejs_1 = __importDefault(__nccwpck_require__(8431));
+const core = __importStar(__nccwpck_require__(2186));
 const remark_1 = __importDefault(__nccwpck_require__(2081));
 const remark_toc_1 = __importDefault(__nccwpck_require__(5096));
-const core = __importStar(__nccwpck_require__(2186));
+const template_1 = __importDefault(__nccwpck_require__(3932));
 const api_1 = __importDefault(__nccwpck_require__(8229));
 const link_1 = __importDefault(__nccwpck_require__(9338));
 const git_1 = __importDefault(__nccwpck_require__(6350));
-const template_1 = __importDefault(__nccwpck_require__(3932));
+const fs_1 = __importDefault(__nccwpck_require__(5747));
 const fsp = fs_1.default.promises;
-const OUTPUT_FILENAME = core.getInput('output-filename') || 'README.md';
-const REPO_USERNAME = (_a = process.env.GITHUB_REPOSITORY) === null || _a === void 0 ? void 0 : _a.split('/')[0];
-const API_STARRED_URL = `${process.env.GITHUB_API_URL}/users/${REPO_USERNAME}/starred`;
-const renderer = (data, templateString = template_1.default) => __awaiter(void 0, void 0, void 0, function* () {
-    try {
-        return ejs_1.default.render(templateString, data);
-    }
-    catch (error) {
-        core.error('#renderer');
-        core.error(error);
-        return '';
-    }
-});
-const wait = (time = 200) => new Promise((resolve) => setTimeout(resolve, time));
+function wait(time = 200) {
+    return new Promise((resolve) => setTimeout(resolve, time));
+}
+exports.wait = wait;
+function isLastPage(links) {
+    return links.next === links.last;
+}
+exports.isLastPage = isLastPage;
+function renderer(data, templateString = template_1.default) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            return ejs_1.default.render(templateString, data);
+        }
+        catch (error) {
+            core.error('#renderer');
+            core.error(error);
+            process.exit(1);
+        }
+    });
+}
+exports.renderer = renderer;
 function apiGetStar(url) {
     return __awaiter(this, void 0, void 0, function* () {
         const { headers, body } = yield api_1.default.get(url);
@@ -21390,9 +21397,23 @@ function apiGetStar(url) {
         };
     });
 }
-function isLastPage(links) {
-    return links.next === links.last;
+exports.apiGetStar = apiGetStar;
+exports.REPO_USERNAME = (_a = process.env.GITHUB_REPOSITORY) === null || _a === void 0 ? void 0 : _a.split('/')[0];
+exports.API_STARRED_URL = `${process.env.GITHUB_API_URL}/users/${exports.REPO_USERNAME}/starred`;
+let links = {
+    next: exports.API_STARRED_URL,
+    last: undefined,
+};
+function paginate() {
+    return __awaiter(this, void 0, void 0, function* () {
+        if (!isLastPage(links))
+            return null;
+        const r = yield apiGetStar(links.next);
+        links = r.links;
+        return r;
+    });
 }
+exports.paginate = paginate;
 function generateMd(data) {
     return new Promise((resolve) => {
         remark_1.default()
@@ -21408,19 +21429,68 @@ function generateMd(data) {
     });
 }
 exports.generateMd = generateMd;
+exports.OUTPUT_FILENAME = core.getInput('output-filename') || 'README.md';
+function pushNewFile(markdown) {
+    return __awaiter(this, void 0, void 0, function* () {
+        yield fsp.writeFile(exports.OUTPUT_FILENAME, markdown);
+        yield git_1.default.pull();
+        yield git_1.default.add(exports.OUTPUT_FILENAME);
+        yield git_1.default.commit(`chore(${exports.OUTPUT_FILENAME}): updated ${exports.OUTPUT_FILENAME}`);
+        yield git_1.default.push();
+    });
+}
+exports.pushNewFile = pushNewFile;
+
+
+/***/ }),
+
+/***/ 6144:
+/***/ (function(__unused_webpack_module, exports, __nccwpck_require__) {
+
+"use strict";
+
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.run = exports.main = void 0;
+const core = __importStar(__nccwpck_require__(2186));
+const helpers_1 = __nccwpck_require__(3015);
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
-        let links = {
-            next: API_STARRED_URL,
-            last: undefined,
-        };
         let results = [];
-        do {
-            const r = yield apiGetStar(links.next);
-            links = r.links;
+        while (true) {
+            // sorry.
+            const r = yield helpers_1.paginate();
+            if (!r || r === null)
+                break;
             results = results.concat(r.data);
-            yield wait();
-        } while (!isLastPage(links));
+        }
         const sortedByLanguages = results.reduce((acc, val) => {
             const language = val.language || 'generic';
             if (!acc[language]) {
@@ -21431,16 +21501,13 @@ function main() {
             }
             return acc;
         }, {});
-        const rendered = yield renderer({
-            username: REPO_USERNAME,
+        const rendered = yield helpers_1.renderer({
+            username: helpers_1.REPO_USERNAME,
             stars: Object.entries(sortedByLanguages),
             updatedAt: Date.now(),
         });
-        const markdown = yield generateMd(rendered);
-        yield fsp.writeFile(OUTPUT_FILENAME, markdown);
-        yield git_1.default.add(OUTPUT_FILENAME);
-        yield git_1.default.commit(`chore(${OUTPUT_FILENAME}): updated ${OUTPUT_FILENAME}`);
-        yield git_1.default.push();
+        const markdown = yield helpers_1.generateMd(rendered);
+        yield helpers_1.pushNewFile(markdown);
     });
 }
 exports.main = main;

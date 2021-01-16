@@ -1,5 +1,13 @@
+## <small>1.0.16 (2021-01-16)</small>
+
+* chore: moved helpers in own file ([29bcf41](https://github.com/simonecorsi/mawesome/commit/29bcf41))
+* fix: if tempalte fail should exit(1) ([ee824d1](https://github.com/simonecorsi/mawesome/commit/ee824d1))
+
+
+
 ## <small>1.0.15 (2021-01-16)</small>
 
+* chore(release): v1.0.15 ([03e1973](https://github.com/simonecorsi/mawesome/commit/03e1973))
 * fix: template cannot be loaded from ejs file ([78c0f37](https://github.com/simonecorsi/mawesome/commit/78c0f37))
 
 

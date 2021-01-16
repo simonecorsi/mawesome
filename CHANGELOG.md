@@ -1,21 +1,10 @@
+## <small>1.0.26 (2021-01-16)</small>
+
+* chore: added link to project ([0543c05](https://github.com/simonecorsi/mawesome/commit/0543c05))
+
+
+
 ## <small>1.0.25 (2021-01-16)</small>
-
-* fix: should fix unshallow repo ([17c5d85](https://github.com/simonecorsi/mawesome/commit/17c5d85))
-
-
-
-## <small>1.0.24 (2021-01-16)</small>
-
-* chore(release): v1.0.22 ([3f66738](https://github.com/simonecorsi/mawesome/commit/3f66738))
-* chore(release): v1.0.23 ([f41befa](https://github.com/simonecorsi/mawesome/commit/f41befa))
-* chore(release): v1.0.24 ([9badeaf](https://github.com/simonecorsi/mawesome/commit/9badeaf))
-* fix: git pull strategy ([edb4a38](https://github.com/simonecorsi/mawesome/commit/edb4a38))
-* fix: git push ([c8fb3f4](https://github.com/simonecorsi/mawesome/commit/c8fb3f4))
-* docs: added authors ([3de0e12](https://github.com/simonecorsi/mawesome/commit/3de0e12))
-
-
-
-## <small>1.0.21 (2021-01-16)</small>
 
 * chore: action name ([8f3ce98](https://github.com/simonecorsi/mawesome/commit/8f3ce98))
 * chore: moved helpers in own file ([29bcf41](https://github.com/simonecorsi/mawesome/commit/29bcf41))
@@ -42,6 +31,10 @@
 * chore(release): v1.0.2 ([3cba062](https://github.com/simonecorsi/mawesome/commit/3cba062))
 * chore(release): v1.0.20 ([738785e](https://github.com/simonecorsi/mawesome/commit/738785e))
 * chore(release): v1.0.21 ([3c3ab0a](https://github.com/simonecorsi/mawesome/commit/3c3ab0a))
+* chore(release): v1.0.22 ([3f66738](https://github.com/simonecorsi/mawesome/commit/3f66738))
+* chore(release): v1.0.23 ([f41befa](https://github.com/simonecorsi/mawesome/commit/f41befa))
+* chore(release): v1.0.24 ([9badeaf](https://github.com/simonecorsi/mawesome/commit/9badeaf))
+* chore(release): v1.0.25 ([14ccc97](https://github.com/simonecorsi/mawesome/commit/14ccc97))
 * chore(release): v1.0.3 ([71625bd](https://github.com/simonecorsi/mawesome/commit/71625bd))
 * chore(release): v1.0.4 ([46583c7](https://github.com/simonecorsi/mawesome/commit/46583c7))
 * chore(release): v1.0.5 ([ba24bdf](https://github.com/simonecorsi/mawesome/commit/ba24bdf))
@@ -56,9 +49,12 @@
 * fix: better errors ([f302126](https://github.com/simonecorsi/mawesome/commit/f302126))
 * fix: better template management ([9d06abc](https://github.com/simonecorsi/mawesome/commit/9d06abc))
 * fix: exit condition ([914a115](https://github.com/simonecorsi/mawesome/commit/914a115))
+* fix: git pull strategy ([edb4a38](https://github.com/simonecorsi/mawesome/commit/edb4a38))
+* fix: git push ([c8fb3f4](https://github.com/simonecorsi/mawesome/commit/c8fb3f4))
 * fix: if tempalte fail should exit(1) ([ee824d1](https://github.com/simonecorsi/mawesome/commit/ee824d1))
 * fix: imports ([2e421f0](https://github.com/simonecorsi/mawesome/commit/2e421f0))
 * fix: imports ([376451a](https://github.com/simonecorsi/mawesome/commit/376451a))
+* fix: should fix unshallow repo ([17c5d85](https://github.com/simonecorsi/mawesome/commit/17c5d85))
 * fix: somehow runner wont see template ([808c35c](https://github.com/simonecorsi/mawesome/commit/808c35c))
 * fix: splitting tokens ([bd47078](https://github.com/simonecorsi/mawesome/commit/bd47078))
 * fix: template cannot be loaded from ejs file ([78c0f37](https://github.com/simonecorsi/mawesome/commit/78c0f37))
@@ -66,6 +62,7 @@
 * fix(action.yml): output file now correct path ([98b17f8](https://github.com/simonecorsi/mawesome/commit/98b17f8))
 * fix(ci): bad syntax ([caaf6ab](https://github.com/simonecorsi/mawesome/commit/caaf6ab))
 * fix(index.ts): fs promise fixed path ([285e193](https://github.com/simonecorsi/mawesome/commit/285e193))
+* docs: added authors ([3de0e12](https://github.com/simonecorsi/mawesome/commit/3de0e12))
 * docs: added readme ([e1c9ca0](https://github.com/simonecorsi/mawesome/commit/e1c9ca0))
 * docs: readme updated ([192aa8a](https://github.com/simonecorsi/mawesome/commit/192aa8a))
 * feat: better errors ([1700aa3](https://github.com/simonecorsi/mawesome/commit/1700aa3))

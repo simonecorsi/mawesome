@@ -1,6 +1,6 @@
 {
   "name": "mawesome",
-  "version": "1.0.25",
+  "version": "1.0.26",
   "description": "Generate awesome list from user starred repositories",
   "main": "index.js",
   "author": "Simone Corsi<simonecorsi.dev@gmail.com>",

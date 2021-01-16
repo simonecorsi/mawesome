@@ -21365,15 +21365,13 @@ const api_1 = __importDefault(__nccwpck_require__(8229));
 const link_1 = __importDefault(__nccwpck_require__(9338));
 const git_1 = __importDefault(__nccwpck_require__(6350));
 const core = __importStar(__nccwpck_require__(2186));
-const path_1 = __importDefault(__nccwpck_require__(5622));
 const fsp = fs_1.default.promises;
-const REPO_USERNAME = (_a = process.env.GITHUB_REPOSITORY) === null || _a === void 0 ? void 0 : _a.split('/')[0];
 const OUTPUT_FILENAME = core.getInput('output-filename') || 'README.md';
-const API_STARRED_URL = `https://api.github.com/users/${REPO_USERNAME}/starred`;
+const REPO_USERNAME = (_a = process.env.GITHUB_REPOSITORY) === null || _a === void 0 ? void 0 : _a.split('/')[0];
+const API_STARRED_URL = `${process.env.GITHUB_API_URL}/users/${REPO_USERNAME}/starred`;
 const renderer = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const p = path_1.default.resolve(process.cwd(), 'template.ejs');
-        const MD_TEMPLATE = yield fsp.readFile(p, 'utf-8');
+        const MD_TEMPLATE = yield fsp.readFile('./template.ejs', 'utf-8');
         return ejs_1.default.render(MD_TEMPLATE, data);
     }
     catch (error) {

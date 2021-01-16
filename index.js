@@ -21378,12 +21378,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(2186));
-const exec_1 = __importDefault(__nccwpck_require__(1514));
+const exec = __importStar(__nccwpck_require__(1514));
 const { GITHUB_REPOSITORY, GITHUB_REF } = process.env;
 const IS_TEST = process.env.NODE_ENV === 'test';
 const branch = GITHUB_REF === null || GITHUB_REF === void 0 ? void 0 : GITHUB_REF.replace('refs/heads/', '');
@@ -21408,7 +21405,7 @@ exports.default = new (class Git {
                         },
                     },
                 };
-                const exitCode = yield exec_1.default.exec(`git ${command}`, undefined, options);
+                const exitCode = yield exec.exec(`git ${command}`, undefined, options);
                 if (exitCode === 0) {
                     return resolve(execOutput);
                 }

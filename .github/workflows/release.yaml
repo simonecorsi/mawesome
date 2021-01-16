@@ -11,12 +11,13 @@ jobs:
       - uses: actions/checkout@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - uses: fregante/setup-git-user@v1
 
       - name: build
-        run: npm ci
-        run: npm run release
+        run: |
+          npm ci
+          npm run release
 
       - name: Create github Release
         uses: actions/create-release@v1

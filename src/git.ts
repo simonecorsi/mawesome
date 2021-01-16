@@ -31,16 +31,6 @@ export default new (class Git {
 
   exec = (command: string): Promise<string> => {
     return new Promise(async (resolve, reject) => {
-      if (IS_TEST) {
-        const fullCommand = `git ${command}`;
-
-        console.log(`Skipping "${fullCommand}" because of test env`);
-
-        if (!fullCommand.includes('git remote set-url origin')) {
-          this.commandsRun.push(fullCommand);
-        }
-        return resolve('done');
-      }
       let execOutput = '';
 
       const options = {
@@ -56,6 +46,7 @@ export default new (class Git {
       if (exitCode === 0) {
         return resolve(execOutput);
       } else {
+        core.error(`Command "git ${command}" exited with code ${exitCode}.`);
         return reject(`Command "git ${command}" exited with code ${exitCode}.`);
       }
     });

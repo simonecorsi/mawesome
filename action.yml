@@ -1,7 +1,8 @@
 name: 'My Awesome list'
 description: 'Generate awesome list from user starred repositories'
-icon: align-justify
-color: yellow
+branding:
+  icon: align-justify
+  color: yellow
 inputs:
   github-token:
     description: 'Github token'

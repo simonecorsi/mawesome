@@ -1,5 +1,14 @@
+## <small>1.0.29 (2021-01-16)</small>
+
+* ci: on pull_request hook ([748c821](https://github.com/simonecorsi/mawesome/commit/748c821))
+* ci: test on push ([226c942](https://github.com/simonecorsi/mawesome/commit/226c942))
+* feat: added test workflow for pr ([1bd01f6](https://github.com/simonecorsi/mawesome/commit/1bd01f6))
+
+
+
 ## <small>1.0.28 (2021-01-16)</small>
 
+* chore(release): v1.0.28 ([c805822](https://github.com/simonecorsi/mawesome/commit/c805822))
 * tests: added tests ([b8890fc](https://github.com/simonecorsi/mawesome/commit/b8890fc))
 
 

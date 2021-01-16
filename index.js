@@ -20801,6 +20801,7 @@ function factory(key, options) {
  * https://github.com/jhermsmeier/node-http-link-header
  */
 
+/* istanbul ignore file */
 
 
 var COMPATIBLE_ENCODING_PATTERN = /^utf-?8|ascii|utf-?16-?le|ucs-?2|base-?64|latin-?1$/i;
@@ -21263,7 +21264,7 @@ const core = __importStar(__nccwpck_require__(2186));
 const exec = __importStar(__nccwpck_require__(1514));
 const { GITHUB_REPOSITORY, GITHUB_REF } = process.env;
 const branch = GITHUB_REF === null || GITHUB_REF === void 0 ? void 0 : GITHUB_REF.replace('refs/heads/', '');
-exports.default = new (class Git {
+class Git {
     constructor() {
         this.isShallow = () => __awaiter(this, void 0, void 0, function* () {
             const isShallow = yield this.exec('rev-parse --is-shallow-repository');
@@ -21314,7 +21315,8 @@ exports.default = new (class Git {
         // Update the origin
         this.updateOrigin(`https://x-access-token:${githubToken}@github.com/${GITHUB_REPOSITORY}.git`);
     }
-})();
+}
+exports.default = new Git();
 
 
 /***/ }),

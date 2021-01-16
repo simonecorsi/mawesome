@@ -1,5 +1,12 @@
+## <small>1.0.28 (2021-01-16)</small>
+
+* tests: added tests ([b8890fc](https://github.com/simonecorsi/mawesome/commit/b8890fc))
+
+
+
 ## <small>1.0.27 (2021-01-16)</small>
 
+* chore(release): v1.0.27 ([bf07858](https://github.com/simonecorsi/mawesome/commit/bf07858))
 * docs: typo ([46172a5](https://github.com/simonecorsi/mawesome/commit/46172a5))
 
 

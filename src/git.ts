@@ -12,12 +12,9 @@ export default new (class Git {
     const githubToken = core.getInput('github-token', { required: true });
     core.setSecret(githubToken);
 
-    const gitUserName = core.getInput('git-user-name');
-    const gitUserEmail = core.getInput('git-user-email');
-
     // Set config
-    this.config('user.name', gitUserName);
-    this.config('user.email', gitUserEmail);
+    this.config('user.name', 'GitHub Actions');
+    this.config('user.email', 'actions@users.noreply.github.com');
 
     // Update the origin
     this.updateOrigin(

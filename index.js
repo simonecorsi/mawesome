@@ -21308,13 +21308,32 @@ module.exports = Link;
 
 "use strict";
 
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const got_1 = __importDefault(__nccwpck_require__(3061));
-const core_1 = __importDefault(__nccwpck_require__(2186));
-const GITHUB_TOKEN = core_1.default.getInput('github-token', { required: true });
+const core = __importStar(__nccwpck_require__(2186));
+const GITHUB_TOKEN = core.getInput('github-token', { required: true });
 exports.default = got_1.default.extend({
     headers: {
         Authorization: `token ${GITHUB_TOKEN}`,
@@ -21331,6 +21350,25 @@ exports.default = got_1.default.extend({
 "use strict";
 
 // original content by: github.com/TriPSs/conventional-changelog-action/blob/master/src/helpers/git.js
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -21344,7 +21382,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const core_1 = __importDefault(__nccwpck_require__(2186));
+const core = __importStar(__nccwpck_require__(2186));
 const exec_1 = __importDefault(__nccwpck_require__(1514));
 const { GITHUB_REPOSITORY, GITHUB_REF } = process.env;
 const IS_TEST = process.env.NODE_ENV === 'test';
@@ -21389,7 +21427,7 @@ exports.default = new (class Git {
                 args.push('--unshallow');
             }
             args.push('--tags');
-            args.push(core_1.default.getInput('git-pull-method'));
+            args.push(core.getInput('git-pull-method'));
             return this.exec(args.join(' '));
         });
         this.push = () => this.exec(`push origin ${branch} --follow-tags`);
@@ -21401,10 +21439,10 @@ exports.default = new (class Git {
         });
         this.updateOrigin = (repo) => this.exec(`remote set-url origin ${repo}`);
         this.createTag = (tag) => this.exec(`tag -a ${tag} -m "${tag}"`);
-        const githubToken = core_1.default.getInput('github-token', { required: true });
-        core_1.default.setSecret(githubToken);
-        const gitUserName = core_1.default.getInput('git-user-name');
-        const gitUserEmail = core_1.default.getInput('git-user-email');
+        const githubToken = core.getInput('github-token', { required: true });
+        core.setSecret(githubToken);
+        const gitUserName = core.getInput('git-user-name');
+        const gitUserEmail = core.getInput('git-user-email');
         // Set config
         this.config('user.name', gitUserName);
         this.config('user.email', gitUserEmail);
@@ -21421,6 +21459,25 @@ exports.default = new (class Git {
 
 "use strict";
 
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -21444,10 +21501,10 @@ const remark_toc_1 = __importDefault(__nccwpck_require__(5096));
 const api_1 = __importDefault(__nccwpck_require__(8229));
 const link_1 = __importDefault(__nccwpck_require__(9338));
 const git_1 = __importDefault(__nccwpck_require__(6350));
-const core_1 = __importDefault(__nccwpck_require__(2186));
+const core = __importStar(__nccwpck_require__(2186));
 const fsp = fs_1.default.promises;
 const REPO_USERNAME = (_a = process.env.GITHUB_REPOSITORY) === null || _a === void 0 ? void 0 : _a.split('/')[0];
-const OUTPUT_FILENAME = core_1.default.getInput('output-filename') || 'README.md';
+const OUTPUT_FILENAME = core.getInput('output-filename') || 'README.md';
 const IS_PROD = process.env.NODE_ENV === 'production';
 const USERNAME = process.env.GITHUB_ACTOR || 'simonecorsi';
 const API_STARRED_URL = `'https://api.github.com/users/${REPO_USERNAME}/starred'`;
@@ -21457,7 +21514,7 @@ const renderer = (data) => __awaiter(void 0, void 0, void 0, function* () {
         return ejs_1.default.render(MD_TEMPLATE, data);
     }
     catch (error) {
-        core_1.default.error(error);
+        core.error(error);
         return '';
     }
 });
@@ -21487,7 +21544,7 @@ function generateMd(data) {
             .use(remark_toc_1.default)
             .process(data, function (error, file) {
             if (error) {
-                core_1.default.error(error);
+                core.error(error);
                 return resolve('');
             }
             return resolve(String(file));
@@ -21547,7 +21604,7 @@ function run() {
 }
 exports.run = run;
 const catchAll = (info) => {
-    core_1.default.error(info);
+    core.error(info);
     process.exit(1);
 };
 process.on('unhandledRejection', catchAll);

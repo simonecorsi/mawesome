@@ -1,5 +1,12 @@
+## <small>1.0.5 (2021-01-16)</small>
+
+* fix: imports ([1146fe7](https://github.com/simonecorsi/mawesome/commit/1146fe7))
+
+
+
 ## <small>1.0.4 (2021-01-16)</small>
 
+* chore(release): v1.0.4 ([37e45a3](https://github.com/simonecorsi/mawesome/commit/37e45a3))
 * fix(index.ts): fs promise fixed path ([0df413e](https://github.com/simonecorsi/mawesome/commit/0df413e))
 
 

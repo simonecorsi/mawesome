@@ -3,10 +3,10 @@ description: 'Generate awesome list from user starred repositories'
 inputs:
   github-token:
     description: 'Github token'
-    default: ${{ secrets.GITHUB_TOKEN }}
+    required: true
   api-token:
     description: 'Personal API Token'
-    default: ${{ secrets.API_TOKEN }}
+    required: true
 runs:
   using: 'node12'
   main: 'index.js'

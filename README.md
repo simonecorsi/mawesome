@@ -21,8 +21,17 @@ Output the generated list in the project `README.md`
 ## Example usage
 
 ```yml
-  uses: simonecorsi/mawesome@v1
-  with:
-    github-token: ${{ secrets.GITHUB_TOKEN }}
-    api-token: ${{ secrets.API_TOKEN }}
+name: Generate Awesome List
+on: [workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run a one-line script
+        uses: simonecorsi/mawesome@main
+        with:
+          api-token: ${{ secrets.API_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 ```

@@ -29,9 +29,8 @@ export async function renderer(
   try {
     return ejs.render(templateString, data);
   } catch (error) {
-    core.error('#renderer');
-    core.error(error);
-    process.exit(1);
+    core.setFailed(`#renderer: ${error}`);
+    return '';
   }
 }
 
@@ -57,7 +56,7 @@ let links: PaginationLink = {
   last: undefined,
 };
 export async function paginate(): Promise<ApiGetStarResponse | null> {
-  if (!isLastPage(links)) return null;
+  if (isLastPage(links)) return null;
   const r = await apiGetStar(links.next);
   links = r.links;
   return r;

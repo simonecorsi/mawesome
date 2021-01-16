@@ -1,4 +1,4 @@
-// original content by: github.com/TriPSs/conventional-changelog-action/blob/master/src/helpers/git.js
+// original content by: https://github.com/TriPSs/conventional-changelog-action/blob/master/src/helpers/git.js
 
 import * as core from '@actions/core';
 import * as exec from '@actions/exec';

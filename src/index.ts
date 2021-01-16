@@ -47,18 +47,13 @@ export async function main(): Promise<any> {
 export async function run(): Promise<any> {
   try {
     await main();
-    process.exit(0);
   } catch (error) {
-    core.error('#run:');
-    core.error(error);
-    process.exit(1);
+    core.setFailed(`#run: ${error}`);
   }
 }
 
 const catchAll = (info: any) => {
-  core.error('#catchAll');
-  core.error(info);
-  process.exit(1);
+  core.setFailed(`#catchAll: ${info}`);
 };
 process.on('unhandledRejection', catchAll);
 process.on('uncaughtException', catchAll);

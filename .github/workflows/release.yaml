@@ -14,10 +14,24 @@ jobs:
 
       - uses: fregante/setup-git-user@v1
 
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
+
       - name: build
         run: |
-          npm ci
-          npm run release
+          npm ci && npm run build
+          git add . && git commit -am 'build(index.js): build'
+
+      - name: Bump version and push tag
+        id: changelog
+        uses: TriPSs/conventional-changelog-action@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          git-message: 'chore(release): {version}'
+          tag-prefix: ''
+          preset: ''
 
       - name: Create github Release
         uses: actions/create-release@v1

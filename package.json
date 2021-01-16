@@ -1,8 +1,10 @@
 {
   "name": "mawesome",
   "version": "1.0.22",
-  "description": "",
+  "description": "Generate awesome list from user starred repositories",
   "main": "index.js",
+  "author": "Simone Corsi<simonecorsi.dev@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "style:lint": "eslint src --ext .ts",
@@ -20,8 +22,6 @@
     "typescript",
     "javascript"
   ],
-  "author": "Simone Corsi",
-  "license": "ISC",
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",

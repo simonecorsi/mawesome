@@ -10,7 +10,8 @@
     "build": "./node_modules/.bin/ncc build src/index.ts -o ./",
     "dev": "ts-node-dev src/index.ts",
     "prerelease": "npm run build",
-    "release": "HUSKY_SKIP_HOOKS=1 standard-version"
+    "release": "HUSKY_SKIP_HOOKS=1 standard-version",
+    "postrelease": "git push origin main --follow-tags"
   },
   "keywords": [
     "github",

@@ -17,15 +17,6 @@ jobs:
           npm ci
           npm run release
 
-      - name: Bump version and push tag
-        id: changelog
-        uses: TriPSs/conventional-changelog-action@v2
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          git-message: 'chore(release): {version}'
-          tag-prefix: ''
-          preset: ''
-
       - name: Create github Release
         uses: actions/create-release@v1
         if: ${{ steps.changelog.outputs.skipped == 'false' }}

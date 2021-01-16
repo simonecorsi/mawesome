@@ -55,7 +55,6 @@
     "@actions/exec": "^1.0.4",
     "@actions/core": "^1.2.6",
     "@actions/github": "^4.0.0",
-    "dotenv": "^8.2.0",
     "ejs": "^3.1.5",
     "got": "^11.8.1",
     "remark": "^13.0.0",

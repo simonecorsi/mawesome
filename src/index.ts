@@ -1,6 +1,4 @@
-import dotnenv from 'dotenv';
 import fs from 'fs';
-
 import ejs from 'ejs';
 import remark from 'remark';
 import toc from 'remark-toc';
@@ -8,8 +6,7 @@ import GithubApi from './api';
 import link from './link';
 import git from './git';
 import * as core from '@actions/core';
-
-const fsp = fs.promises;
+import path from 'path';
 
 import type {
   SortedLanguageList,
@@ -19,6 +16,8 @@ import type {
   ApiGetStarResponse,
 } from './types';
 
+const fsp = fs.promises;
+
 const REPO_USERNAME = process.env.GITHUB_REPOSITORY?.split('/')[0];
 const OUTPUT_FILENAME: string = core.getInput('output-filename') || 'README.md';
 
@@ -26,7 +25,8 @@ const API_STARRED_URL = `https://api.github.com/users/${REPO_USERNAME}/starred`;
 
 const renderer = async (data: any) => {
   try {
-    const MD_TEMPLATE = await fsp.readFile('fixtures/template.md.ejs', 'utf-8');
+    const p = path.resolve(process.cwd(), 'template.ejs');
+    const MD_TEMPLATE = await fsp.readFile(p, 'utf-8');
     return ejs.render(MD_TEMPLATE, data);
   } catch (error) {
     core.error('#renderer');

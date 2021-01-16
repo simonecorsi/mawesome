@@ -1,34 +1,47 @@
-## <small>1.0.12 (2021-01-16)</small>
+## <small>1.0.13 (2021-01-16)</small>
 
-* feat: git user now is action ([83db82b](https://github.com/simonecorsi/mawesome/commit/83db82b))
-
-
-
-## <small>1.0.11 (2021-01-16)</small>
-
-* chore(release): v1.0.11 ([b5ae554](https://github.com/simonecorsi/mawesome/commit/b5ae554))
-* fix: added required label ([be35c87](https://github.com/simonecorsi/mawesome/commit/be35c87))
-
-
-
-## <small>1.0.10 (2021-01-16)</small>
-
-* chore(release): v1.0.10 ([9fb2aa9](https://github.com/simonecorsi/mawesome/commit/9fb2aa9))
-* fix: splitting tokens ([b876c92](https://github.com/simonecorsi/mawesome/commit/b876c92))
-
-
-
-## <small>1.0.9 (2021-01-16)</small>
-
-* chore(release): v1.0.9 ([e82522d](https://github.com/simonecorsi/mawesome/commit/e82522d))
-* fix: better errors ([a6f8510](https://github.com/simonecorsi/mawesome/commit/a6f8510))
-
-
-
-## <small>1.0.8 (2021-01-16)</small>
-
-* chore(release): v1.0.8 ([f8cb98f](https://github.com/simonecorsi/mawesome/commit/f8cb98f))
-* fix: bad quotes in url ([4abcb32](https://github.com/simonecorsi/mawesome/commit/4abcb32))
+* fix: added required label ([173ce50](https://github.com/simonecorsi/mawesome/commit/173ce50))
+* fix: bad quotes in url ([76d0173](https://github.com/simonecorsi/mawesome/commit/76d0173))
+* fix: better errors ([f302126](https://github.com/simonecorsi/mawesome/commit/f302126))
+* fix: better template management ([9d06abc](https://github.com/simonecorsi/mawesome/commit/9d06abc))
+* fix: imports ([2e421f0](https://github.com/simonecorsi/mawesome/commit/2e421f0))
+* fix: imports ([376451a](https://github.com/simonecorsi/mawesome/commit/376451a))
+* fix: splitting tokens ([bd47078](https://github.com/simonecorsi/mawesome/commit/bd47078))
+* fix: variable name ([13e1fd1](https://github.com/simonecorsi/mawesome/commit/13e1fd1))
+* fix(action.yml): output file now correct path ([98b17f8](https://github.com/simonecorsi/mawesome/commit/98b17f8))
+* fix(ci): bad syntax ([caaf6ab](https://github.com/simonecorsi/mawesome/commit/caaf6ab))
+* fix(index.ts): fs promise fixed path ([285e193](https://github.com/simonecorsi/mawesome/commit/285e193))
+* chore: action name ([8f3ce98](https://github.com/simonecorsi/mawesome/commit/8f3ce98))
+* chore: namings ([b16fdb0](https://github.com/simonecorsi/mawesome/commit/b16fdb0))
+* chore: post release script ([12dd0e4](https://github.com/simonecorsi/mawesome/commit/12dd0e4))
+* chore(action.yml): node downgrated to 12 ([f91b26b](https://github.com/simonecorsi/mawesome/commit/f91b26b))
+* chore(release): 1.0.1 ([4193d0e](https://github.com/simonecorsi/mawesome/commit/4193d0e))
+* chore(release): 1.0.2 ([00b27bf](https://github.com/simonecorsi/mawesome/commit/00b27bf))
+* chore(release): 1.0.3 ([bb5dd1f](https://github.com/simonecorsi/mawesome/commit/bb5dd1f))
+* chore(release): 1.0.4 ([be86777](https://github.com/simonecorsi/mawesome/commit/be86777))
+* chore(release): 1.0.5 ([a47a53f](https://github.com/simonecorsi/mawesome/commit/a47a53f))
+* chore(release): v1.0.1 ([e297342](https://github.com/simonecorsi/mawesome/commit/e297342))
+* chore(release): v1.0.10 ([c2a11da](https://github.com/simonecorsi/mawesome/commit/c2a11da))
+* chore(release): v1.0.11 ([ab4322e](https://github.com/simonecorsi/mawesome/commit/ab4322e))
+* chore(release): v1.0.12 ([0be94f1](https://github.com/simonecorsi/mawesome/commit/0be94f1))
+* chore(release): v1.0.2 ([3cba062](https://github.com/simonecorsi/mawesome/commit/3cba062))
+* chore(release): v1.0.3 ([71625bd](https://github.com/simonecorsi/mawesome/commit/71625bd))
+* chore(release): v1.0.4 ([46583c7](https://github.com/simonecorsi/mawesome/commit/46583c7))
+* chore(release): v1.0.5 ([ba24bdf](https://github.com/simonecorsi/mawesome/commit/ba24bdf))
+* chore(release): v1.0.6 ([6cb192b](https://github.com/simonecorsi/mawesome/commit/6cb192b))
+* chore(release): v1.0.7 ([410e2a7](https://github.com/simonecorsi/mawesome/commit/410e2a7))
+* chore(release): v1.0.8 ([324332b](https://github.com/simonecorsi/mawesome/commit/324332b))
+* chore(release): v1.0.9 ([7499f86](https://github.com/simonecorsi/mawesome/commit/7499f86))
+* feat: better errors ([1700aa3](https://github.com/simonecorsi/mawesome/commit/1700aa3))
+* feat: generate awesome list from stars ([0f6fa76](https://github.com/simonecorsi/mawesome/commit/0f6fa76))
+* feat: git user now is action ([aa70ac9](https://github.com/simonecorsi/mawesome/commit/aa70ac9))
+* ci: added github user setup ([a4bbd4b](https://github.com/simonecorsi/mawesome/commit/a4bbd4b))
+* ci: better release ([ea34727](https://github.com/simonecorsi/mawesome/commit/ea34727))
+* ci(version): prefixed now with v ([f3d2757](https://github.com/simonecorsi/mawesome/commit/f3d2757))
+* build: better releasing workflow ([ac6e274](https://github.com/simonecorsi/mawesome/commit/ac6e274))
+* build(index.js): build ([e007c3b](https://github.com/simonecorsi/mawesome/commit/e007c3b))
+* docs: added readme ([e1c9ca0](https://github.com/simonecorsi/mawesome/commit/e1c9ca0))
+* Initial commit ([e884018](https://github.com/simonecorsi/mawesome/commit/e884018))
 
 
 

@@ -21,7 +21,6 @@ import type {
 
 const REPO_USERNAME = process.env.GITHUB_REPOSITORY?.split('/')[0];
 const OUTPUT_FILENAME: string = core.getInput('output-filename') || 'README.md';
-const IS_PROD = process.env.NODE_ENV === 'production';
 
 const USERNAME = process.env.GITHUB_ACTOR || 'simonecorsi';
 const API_STARRED_URL = `'https://api.github.com/users/${REPO_USERNAME}/starred'`;
@@ -31,26 +30,17 @@ const renderer = async (data: any) => {
     const MD_TEMPLATE = await fsp.readFile('fixtures/template.md.ejs', 'utf-8');
     return ejs.render(MD_TEMPLATE, data);
   } catch (error) {
+    core.error('#renderer');
     core.error(error);
     return '';
   }
 };
 
-if (!IS_PROD) {
-  dotnenv.config();
-}
-
 const wait = (time = 200) =>
   new Promise((resolve) => setTimeout(resolve, time));
 
 async function apiGetStar(url: string): Promise<ApiGetStarResponse> {
-  const { headers, body }: any = await (async () => {
-    if (!IS_PROD)
-      return JSON.parse(
-        await fsp.readFile('fixtures/stars-response.json', 'utf-8')
-      );
-    return GithubApi.get(url);
-  })();
+  const { headers, body }: any = await GithubApi.get(url);
   return {
     data: body,
     links: link.parse(headers.link).refs.reduce(
@@ -73,6 +63,7 @@ export function generateMd(data: string): Promise<string> {
       .use(toc)
       .process(data, function (error, file) {
         if (error) {
+          core.error('#generateMd');
           core.error(error);
           return resolve('');
         }
@@ -91,7 +82,6 @@ export async function main(): Promise<any> {
     const r = await apiGetStar(links.next);
     links = r.links;
     results = results.concat(r.data);
-    if (!IS_PROD) break;
     await wait();
   } while (!isLastPage(links));
 
@@ -130,12 +120,14 @@ export async function run(): Promise<any> {
     await main();
     process.exit(0);
   } catch (error) {
-    process.stderr.write(error);
+    core.error('#catchAll:');
+    core.error(error);
     process.exit(1);
   }
 }
 
 const catchAll = (info: any) => {
+  core.error('#catchAll');
   core.error(info);
   process.exit(1);
 };

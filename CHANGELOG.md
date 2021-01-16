@@ -1,5 +1,12 @@
+## <small>1.0.8 (2021-01-16)</small>
+
+* fix: bad quotes in url ([4abcb32](https://github.com/simonecorsi/mawesome/commit/4abcb32))
+
+
+
 ## <small>1.0.7 (2021-01-16)</small>
 
+* chore(release): v1.0.7 ([3c133b8](https://github.com/simonecorsi/mawesome/commit/3c133b8))
 * feat: better errors ([be667ed](https://github.com/simonecorsi/mawesome/commit/be667ed))
 
 
@@ -22,13 +29,6 @@
 
 * chore(release): v1.0.4 ([37e45a3](https://github.com/simonecorsi/mawesome/commit/37e45a3))
 * fix(index.ts): fs promise fixed path ([0df413e](https://github.com/simonecorsi/mawesome/commit/0df413e))
-
-
-
-## <small>1.0.3 (2021-01-16)</small>
-
-* chore(release): v1.0.3 ([d973275](https://github.com/simonecorsi/mawesome/commit/d973275))
-* fix(action.yml): output file now correct path ([0ffe529](https://github.com/simonecorsi/mawesome/commit/0ffe529))
 
 
 

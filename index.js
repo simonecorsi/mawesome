@@ -21381,8 +21381,7 @@ const core = __importStar(__nccwpck_require__(2186));
 const fsp = fs_1.default.promises;
 const REPO_USERNAME = (_a = process.env.GITHUB_REPOSITORY) === null || _a === void 0 ? void 0 : _a.split('/')[0];
 const OUTPUT_FILENAME = core.getInput('output-filename') || 'README.md';
-const USERNAME = process.env.GITHUB_ACTOR || 'simonecorsi';
-const API_STARRED_URL = `'https://api.github.com/users/${REPO_USERNAME}/starred'`;
+const API_STARRED_URL = `https://api.github.com/users/${REPO_USERNAME}/starred`;
 const renderer = (data) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const MD_TEMPLATE = yield fsp.readFile('fixtures/template.md.ejs', 'utf-8');
@@ -21446,7 +21445,7 @@ function main() {
             return acc;
         }, {});
         const rendered = yield renderer({
-            username: USERNAME,
+            username: REPO_USERNAME,
             stars: Object.entries(sortedByLanguages),
             updatedAt: Date.now(),
         });

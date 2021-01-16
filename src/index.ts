@@ -118,7 +118,7 @@ export async function main(): Promise<any> {
 
   await git.add(OUTPUT_FILENAME);
 
-  await git.commit(`chore(${OUTPUT_FILENAME}): updated list`);
+  await git.commit(`chore(${OUTPUT_FILENAME}): updated ${OUTPUT_FILENAME}`);
 
   await git.push();
 }

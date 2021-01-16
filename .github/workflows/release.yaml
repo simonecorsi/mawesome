@@ -20,9 +20,7 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
 
       - name: build
-        run: |
-          npm ci && npm run build
-          git add . && git commit -am 'build(index.js): build'
+        run: npm ci && npm run build
 
       - name: Bump version and push tag
         id: changelog

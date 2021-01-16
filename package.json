@@ -46,7 +46,6 @@
     "husky": "^4.2.5",
     "lint-staged": "^10.2.2",
     "markdown-toc": "^1.2.0",
-    "ninos": "^3.0.0",
     "nyc": "^15.0.1",
     "prettier": "^2.0.5",
     "sinon": "^9.2.3",
@@ -57,7 +56,6 @@
   "dependencies": {
     "@actions/exec": "^1.0.4",
     "@actions/core": "^1.2.6",
-    "@actions/github": "^4.0.0",
     "ejs": "^3.1.5",
     "got": "^11.8.1",
     "remark": "^13.0.0",

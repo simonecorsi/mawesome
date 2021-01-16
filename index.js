@@ -3044,126 +3044,6 @@ module.exports.default = deferToConnect;
 
 /***/ }),
 
-/***/ 2437:
-/***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
-
-/* @flow */
-/*::
-
-type DotenvParseOptions = {
-  debug?: boolean
-}
-
-// keys and values from src
-type DotenvParseOutput = { [string]: string }
-
-type DotenvConfigOptions = {
-  path?: string, // path to .env file
-  encoding?: string, // encoding of .env file
-  debug?: string // turn on logging for debugging purposes
-}
-
-type DotenvConfigOutput = {
-  parsed?: DotenvParseOutput,
-  error?: Error
-}
-
-*/
-
-const fs = __nccwpck_require__(5747)
-const path = __nccwpck_require__(5622)
-
-function log (message /*: string */) {
-  console.log(`[dotenv][DEBUG] ${message}`)
-}
-
-const NEWLINE = '\n'
-const RE_INI_KEY_VAL = /^\s*([\w.-]+)\s*=\s*(.*)?\s*$/
-const RE_NEWLINES = /\\n/g
-const NEWLINES_MATCH = /\n|\r|\r\n/
-
-// Parses src into an Object
-function parse (src /*: string | Buffer */, options /*: ?DotenvParseOptions */) /*: DotenvParseOutput */ {
-  const debug = Boolean(options && options.debug)
-  const obj = {}
-
-  // convert Buffers before splitting into lines and processing
-  src.toString().split(NEWLINES_MATCH).forEach(function (line, idx) {
-    // matching "KEY' and 'VAL' in 'KEY=VAL'
-    const keyValueArr = line.match(RE_INI_KEY_VAL)
-    // matched?
-    if (keyValueArr != null) {
-      const key = keyValueArr[1]
-      // default undefined or missing values to empty string
-      let val = (keyValueArr[2] || '')
-      const end = val.length - 1
-      const isDoubleQuoted = val[0] === '"' && val[end] === '"'
-      const isSingleQuoted = val[0] === "'" && val[end] === "'"
-
-      // if single or double quoted, remove quotes
-      if (isSingleQuoted || isDoubleQuoted) {
-        val = val.substring(1, end)
-
-        // if double quoted, expand newlines
-        if (isDoubleQuoted) {
-          val = val.replace(RE_NEWLINES, NEWLINE)
-        }
-      } else {
-        // remove surrounding whitespace
-        val = val.trim()
-      }
-
-      obj[key] = val
-    } else if (debug) {
-      log(`did not match key and value when parsing line ${idx + 1}: ${line}`)
-    }
-  })
-
-  return obj
-}
-
-// Populates process.env from .env file
-function config (options /*: ?DotenvConfigOptions */) /*: DotenvConfigOutput */ {
-  let dotenvPath = path.resolve(process.cwd(), '.env')
-  let encoding /*: string */ = 'utf8'
-  let debug = false
-
-  if (options) {
-    if (options.path != null) {
-      dotenvPath = options.path
-    }
-    if (options.encoding != null) {
-      encoding = options.encoding
-    }
-    if (options.debug != null) {
-      debug = true
-    }
-  }
-
-  try {
-    // specifying an encoding returns a string instead of a buffer
-    const parsed = parse(fs.readFileSync(dotenvPath, { encoding }), { debug })
-
-    Object.keys(parsed).forEach(function (key) {
-      if (!Object.prototype.hasOwnProperty.call(process.env, key)) {
-        process.env[key] = parsed[key]
-      } else if (debug) {
-        log(`"${key}" is already defined in \`process.env\` and will not be overwritten`)
-      }
-    })
-
-    return { parsed }
-  } catch (e) {
-    return { error: e }
-  }
-}
-
-module.exports.config = config
-module.exports.parse = parse
-
-
-/***/ }),
-
 /***/ 8431:
 /***/ ((__unused_webpack_module, exports, __nccwpck_require__) => {
 
@@ -21490,7 +21370,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.run = exports.main = exports.generateMd = void 0;
-const dotenv_1 = __importDefault(__nccwpck_require__(2437));
 const fs_1 = __importDefault(__nccwpck_require__(5747));
 const ejs_1 = __importDefault(__nccwpck_require__(8431));
 const remark_1 = __importDefault(__nccwpck_require__(2081));
@@ -21502,7 +21381,6 @@ const core = __importStar(__nccwpck_require__(2186));
 const fsp = fs_1.default.promises;
 const REPO_USERNAME = (_a = process.env.GITHUB_REPOSITORY) === null || _a === void 0 ? void 0 : _a.split('/')[0];
 const OUTPUT_FILENAME = core.getInput('output-filename') || 'README.md';
-const IS_PROD = process.env.NODE_ENV === 'production';
 const USERNAME = process.env.GITHUB_ACTOR || 'simonecorsi';
 const API_STARRED_URL = `'https://api.github.com/users/${REPO_USERNAME}/starred'`;
 const renderer = (data) => __awaiter(void 0, void 0, void 0, function* () {
@@ -21511,21 +21389,15 @@ const renderer = (data) => __awaiter(void 0, void 0, void 0, function* () {
         return ejs_1.default.render(MD_TEMPLATE, data);
     }
     catch (error) {
+        core.error('#renderer');
         core.error(error);
         return '';
     }
 });
-if (!IS_PROD) {
-    dotenv_1.default.config();
-}
 const wait = (time = 200) => new Promise((resolve) => setTimeout(resolve, time));
 function apiGetStar(url) {
     return __awaiter(this, void 0, void 0, function* () {
-        const { headers, body } = yield (() => __awaiter(this, void 0, void 0, function* () {
-            if (!IS_PROD)
-                return JSON.parse(yield fsp.readFile('fixtures/stars-response.json', 'utf-8'));
-            return api_1.default.get(url);
-        }))();
+        const { headers, body } = yield api_1.default.get(url);
         return {
             data: body,
             links: link_1.default.parse(headers.link).refs.reduce((acc, val) => (Object.assign(Object.assign({}, acc), { [val.rel]: val.uri })), {}),
@@ -21541,6 +21413,7 @@ function generateMd(data) {
             .use(remark_toc_1.default)
             .process(data, function (error, file) {
             if (error) {
+                core.error('#generateMd');
                 core.error(error);
                 return resolve('');
             }
@@ -21560,8 +21433,6 @@ function main() {
             const r = yield apiGetStar(links.next);
             links = r.links;
             results = results.concat(r.data);
-            if (!IS_PROD)
-                break;
             yield wait();
         } while (!isLastPage(links));
         const sortedByLanguages = results.reduce((acc, val) => {
@@ -21594,13 +21465,15 @@ function run() {
             process.exit(0);
         }
         catch (error) {
-            process.stderr.write(error);
+            core.error('#catchAll:');
+            core.error(error);
             process.exit(1);
         }
     });
 }
 exports.run = run;
 const catchAll = (info) => {
+    core.error('#catchAll');
     core.error(info);
     process.exit(1);
 };

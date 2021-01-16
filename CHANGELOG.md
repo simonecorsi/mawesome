@@ -1,5 +1,12 @@
+## <small>1.0.7 (2021-01-16)</small>
+
+* feat: better errors ([be667ed](https://github.com/simonecorsi/mawesome/commit/be667ed))
+
+
+
 ## <small>1.0.6 (2021-01-16)</small>
 
+* chore(release): v1.0.6 ([b7a6b30](https://github.com/simonecorsi/mawesome/commit/b7a6b30))
 * fix: imports ([215b3c8](https://github.com/simonecorsi/mawesome/commit/215b3c8))
 
 
@@ -22,13 +29,6 @@
 
 * chore(release): v1.0.3 ([d973275](https://github.com/simonecorsi/mawesome/commit/d973275))
 * fix(action.yml): output file now correct path ([0ffe529](https://github.com/simonecorsi/mawesome/commit/0ffe529))
-
-
-
-## <small>1.0.2 (2021-01-16)</small>
-
-* chore(action.yml): node downgrated to 12 ([e98d8dc](https://github.com/simonecorsi/mawesome/commit/e98d8dc))
-* chore(release): v1.0.2 ([140194e](https://github.com/simonecorsi/mawesome/commit/140194e))
 
 
 

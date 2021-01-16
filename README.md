@@ -6,7 +6,7 @@ This action query the github api to get starred list of the user and then genera
 
 ### `github-token`
 
-The github workflow token is `required`
+The github workflow token
 
 ## Outputs
 

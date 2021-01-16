@@ -3,7 +3,7 @@ description: 'Generate awesome list from user starred repositories'
 inputs:
   github-token:
     description: 'Github token'
-    required: true
+    default: ${{ github.token }}
 runs:
   using: 'node14'
   main: 'dist/index.js'

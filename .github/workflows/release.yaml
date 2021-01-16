@@ -12,6 +12,11 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: build
+        run: |
+          npm ci
+          npm run release
+
       - name: Bump version and push tag
         id: changelog
         uses: TriPSs/conventional-changelog-action@v2

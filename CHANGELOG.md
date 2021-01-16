@@ -1,6 +1,13 @@
+## <small>1.0.27 (2021-01-16)</small>
+
+* docs: typo ([46172a5](https://github.com/simonecorsi/mawesome/commit/46172a5))
+
+
+
 ## <small>1.0.26 (2021-01-16)</small>
 
 * chore: added link to project ([0543c05](https://github.com/simonecorsi/mawesome/commit/0543c05))
+* chore(release): v1.0.26 ([8bc2714](https://github.com/simonecorsi/mawesome/commit/8bc2714))
 
 
 

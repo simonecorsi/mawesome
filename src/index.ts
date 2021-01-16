@@ -2,11 +2,12 @@ import fs from 'fs';
 import ejs from 'ejs';
 import remark from 'remark';
 import toc from 'remark-toc';
+import * as core from '@actions/core';
+
 import GithubApi from './api';
 import link from './link';
 import git from './git';
-import * as core from '@actions/core';
-import path from 'path';
+import MD_TEMPLATE from './template';
 
 import type {
   SortedLanguageList,
@@ -22,10 +23,9 @@ const OUTPUT_FILENAME: string = core.getInput('output-filename') || 'README.md';
 const REPO_USERNAME = process.env.GITHUB_REPOSITORY?.split('/')[0];
 const API_STARRED_URL = `${process.env.GITHUB_API_URL}/users/${REPO_USERNAME}/starred`;
 
-const renderer = async (data: any) => {
+const renderer = async (data: any, templateString = MD_TEMPLATE) => {
   try {
-    const MD_TEMPLATE = await fsp.readFile('./template.ejs', 'utf-8');
-    return ejs.render(MD_TEMPLATE, data);
+    return ejs.render(templateString, data);
   } catch (error) {
     core.error('#renderer');
     core.error(error);

@@ -3,6 +3,7 @@
  * https://github.com/jhermsmeier/node-http-link-header
  */
 
+/* istanbul ignore file */
 'use strict';
 
 var COMPATIBLE_ENCODING_PATTERN = /^utf-?8|ascii|utf-?16-?le|ucs-?2|base-?64|latin-?1$/i;

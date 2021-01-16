@@ -19,8 +19,11 @@ jobs:
           path: '**/node_modules'
           key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
 
+      - name: tests
+        run: npm cit
+
       - name: build
-        run: npm ci && npm run build
+        run: npm run build
 
       - name: Bump version and push tag
         id: changelog

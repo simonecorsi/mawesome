@@ -6,8 +6,7 @@ import * as exec from '@actions/exec';
 const { GITHUB_REPOSITORY, GITHUB_REF } = process.env;
 
 const branch = GITHUB_REF?.replace('refs/heads/', '');
-
-export default new (class Git {
+class Git {
   constructor() {
     const githubToken = core.getInput('github-token', { required: true });
     core.setSecret(githubToken);
@@ -80,4 +79,6 @@ export default new (class Git {
   updateOrigin = (repo: string) => this.exec(`remote set-url origin ${repo}`);
 
   createTag = (tag: string) => this.exec(`tag -a ${tag} -m "${tag}"`);
-})();
+}
+
+export default new Git();

@@ -1,7 +1,7 @@
 // original content by: github.com/TriPSs/conventional-changelog-action/blob/master/src/helpers/git.js
 
 import * as core from '@actions/core';
-import exec from '@actions/exec';
+import * as exec from '@actions/exec';
 
 const { GITHUB_REPOSITORY, GITHUB_REF } = process.env;
 

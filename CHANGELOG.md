@@ -1,5 +1,12 @@
+## <small>1.0.10 (2021-01-16)</small>
+
+* fix: splitting tokens ([b876c92](https://github.com/simonecorsi/mawesome/commit/b876c92))
+
+
+
 ## <small>1.0.9 (2021-01-16)</small>
 
+* chore(release): v1.0.9 ([e82522d](https://github.com/simonecorsi/mawesome/commit/e82522d))
 * fix: better errors ([a6f8510](https://github.com/simonecorsi/mawesome/commit/a6f8510))
 
 
@@ -22,13 +29,6 @@
 
 * chore(release): v1.0.6 ([b7a6b30](https://github.com/simonecorsi/mawesome/commit/b7a6b30))
 * fix: imports ([215b3c8](https://github.com/simonecorsi/mawesome/commit/215b3c8))
-
-
-
-## <small>1.0.5 (2021-01-16)</small>
-
-* chore(release): v1.0.5 ([a8d14e1](https://github.com/simonecorsi/mawesome/commit/a8d14e1))
-* fix: imports ([1146fe7](https://github.com/simonecorsi/mawesome/commit/1146fe7))
 
 
 

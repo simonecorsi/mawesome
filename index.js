@@ -21213,7 +21213,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const got_1 = __importDefault(__nccwpck_require__(3061));
 const core = __importStar(__nccwpck_require__(2186));
-const GITHUB_TOKEN = core.getInput('github-token', { required: true });
+const GITHUB_TOKEN = core.getInput('api-token', { required: true });
 exports.default = got_1.default.extend({
     headers: {
         Authorization: `token ${GITHUB_TOKEN}`,
@@ -21262,11 +21262,9 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__nccwpck_require__(2186));
 const exec = __importStar(__nccwpck_require__(1514));
 const { GITHUB_REPOSITORY, GITHUB_REF } = process.env;
-const IS_TEST = process.env.NODE_ENV === 'test';
 const branch = GITHUB_REF === null || GITHUB_REF === void 0 ? void 0 : GITHUB_REF.replace('refs/heads/', '');
 exports.default = new (class Git {
     constructor() {
-        this.commandsRun = [];
         this.exec = (command) => {
             return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
                 let execOutput = '';
@@ -21302,8 +21300,6 @@ exports.default = new (class Git {
         });
         this.push = () => this.exec(`push origin ${branch} --follow-tags`);
         this.isShallow = () => __awaiter(this, void 0, void 0, function* () {
-            if (IS_TEST)
-                return false;
             const isShallow = yield this.exec('rev-parse --is-shallow-repository');
             return isShallow.trim().replace('\n', '') === 'true';
         });
@@ -21457,7 +21453,7 @@ function run() {
             process.exit(0);
         }
         catch (error) {
-            core.error('#catchAll:');
+            core.error('#run:');
             core.error(error);
             process.exit(1);
         }

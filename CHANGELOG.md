@@ -1,5 +1,12 @@
+## <small>1.0.15 (2021-01-16)</small>
+
+* fix: template cannot be loaded from ejs file ([78c0f37](https://github.com/simonecorsi/mawesome/commit/78c0f37))
+
+
+
 ## <small>1.0.14 (2021-01-16)</small>
 
+* chore(release): v1.0.14 ([91de25f](https://github.com/simonecorsi/mawesome/commit/91de25f))
 * fix: somehow runner wont see template ([808c35c](https://github.com/simonecorsi/mawesome/commit/808c35c))
 
 

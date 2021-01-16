@@ -21361,18 +21361,18 @@ const fs_1 = __importDefault(__nccwpck_require__(5747));
 const ejs_1 = __importDefault(__nccwpck_require__(8431));
 const remark_1 = __importDefault(__nccwpck_require__(2081));
 const remark_toc_1 = __importDefault(__nccwpck_require__(5096));
+const core = __importStar(__nccwpck_require__(2186));
 const api_1 = __importDefault(__nccwpck_require__(8229));
 const link_1 = __importDefault(__nccwpck_require__(9338));
 const git_1 = __importDefault(__nccwpck_require__(6350));
-const core = __importStar(__nccwpck_require__(2186));
+const template_1 = __importDefault(__nccwpck_require__(3932));
 const fsp = fs_1.default.promises;
 const OUTPUT_FILENAME = core.getInput('output-filename') || 'README.md';
 const REPO_USERNAME = (_a = process.env.GITHUB_REPOSITORY) === null || _a === void 0 ? void 0 : _a.split('/')[0];
 const API_STARRED_URL = `${process.env.GITHUB_API_URL}/users/${REPO_USERNAME}/starred`;
-const renderer = (data) => __awaiter(void 0, void 0, void 0, function* () {
+const renderer = (data, templateString = template_1.default) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const MD_TEMPLATE = yield fsp.readFile('./template.ejs', 'utf-8');
-        return ejs_1.default.render(MD_TEMPLATE, data);
+        return ejs_1.default.render(templateString, data);
     }
     catch (error) {
         core.error('#renderer');
@@ -21466,6 +21466,28 @@ const catchAll = (info) => {
 process.on('unhandledRejection', catchAll);
 process.on('uncaughtException', catchAll);
 run();
+
+
+/***/ }),
+
+/***/ 3932:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.default = `# <%= username %> Awesome List [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg)](https://github.com/sindresorhus/awesome)
+
+## Table of Contents
+
+<% for(let [language, repositories] of stars) { %>
+## <%= language %>
+
+<% for(let repo of repositories) { %>- [<%= repo.full_name %>](<%= repo.html_url %>) - <%= repo.description %>
+<% } %>  
+
+<% } %>
+`;
 
 
 /***/ }),

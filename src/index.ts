@@ -7,7 +7,7 @@ import toc from 'remark-toc';
 import GithubApi from './api';
 import link from './link';
 import git from './git';
-import core from '@actions/core';
+import * as core from '@actions/core';
 
 const fsp = fs.promises;
 

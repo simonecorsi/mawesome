@@ -15,6 +15,7 @@ export default new (class Git {
     // Set config
     this.config('user.name', 'GitHub Actions');
     this.config('user.email', 'actions@users.noreply.github.com');
+    this.config('pull.rebase', 'false');
 
     // Update the origin
     this.updateOrigin(
@@ -53,7 +54,7 @@ export default new (class Git {
   commit = (message: string) => this.exec(`commit -m "${message}"`);
 
   pull = async () => {
-    const args = ['pull'];
+    const args = ['pull', 'origin', branch];
 
     // Check if the repo is unshallow
     if (await this.isShallow()) {

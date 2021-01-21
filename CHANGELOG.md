@@ -1,5 +1,12 @@
+## <small>1.0.31 (2021-01-21)</small>
+
+* feat: added user/email input for commiting ([58a7dc1](https://github.com/simonecorsi/mawesome/commit/58a7dc1))
+
+
+
 ## <small>1.0.30 (2021-01-16)</small>
 
+* chore(release): v1.0.30 ([a5f15da](https://github.com/simonecorsi/mawesome/commit/a5f15da))
 * fix: removed push ([7f42ca0](https://github.com/simonecorsi/mawesome/commit/7f42ca0))
 
 
@@ -24,13 +31,6 @@
 
 * chore(release): v1.0.27 ([bf07858](https://github.com/simonecorsi/mawesome/commit/bf07858))
 * docs: typo ([46172a5](https://github.com/simonecorsi/mawesome/commit/46172a5))
-
-
-
-## <small>1.0.26 (2021-01-16)</small>
-
-* chore: added link to project ([0543c05](https://github.com/simonecorsi/mawesome/commit/0543c05))
-* chore(release): v1.0.26 ([8bc2714](https://github.com/simonecorsi/mawesome/commit/8bc2714))
 
 
 

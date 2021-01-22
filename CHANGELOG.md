@@ -1,5 +1,13 @@
+## <small>1.0.32 (2021-01-22)</small>
+
+* docs: added documentation ([5753aef](https://github.com/simonecorsi/mawesome/commit/5753aef))
+* chore: removed unused npm packages ([3ad1555](https://github.com/simonecorsi/mawesome/commit/3ad1555))
+
+
+
 ## <small>1.0.31 (2021-01-21)</small>
 
+* chore(release): v1.0.31 ([903c070](https://github.com/simonecorsi/mawesome/commit/903c070))
 * feat: added user/email input for commiting ([58a7dc1](https://github.com/simonecorsi/mawesome/commit/58a7dc1))
 
 
@@ -24,13 +32,6 @@
 
 * chore(release): v1.0.28 ([c805822](https://github.com/simonecorsi/mawesome/commit/c805822))
 * tests: added tests ([b8890fc](https://github.com/simonecorsi/mawesome/commit/b8890fc))
-
-
-
-## <small>1.0.27 (2021-01-16)</small>
-
-* chore(release): v1.0.27 ([bf07858](https://github.com/simonecorsi/mawesome/commit/bf07858))
-* docs: typo ([46172a5](https://github.com/simonecorsi/mawesome/commit/46172a5))
 
 
 

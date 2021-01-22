@@ -11,9 +11,13 @@ class Git {
     const githubToken = core.getInput('github-token', { required: true });
     core.setSecret(githubToken);
 
+    const githubName = core.getInput('github-name') || 'GitHub Actions';
+    const githubEmail =
+      core.getInput('github-email') || 'actions@users.noreply.github.com';
+
     // Set config
-    this.config('user.name', 'GitHub Actions');
-    this.config('user.email', 'actions@users.noreply.github.com');
+    this.config('user.name', githubName);
+    this.config('user.email', githubEmail);
     this.config('pull.rebase', 'false');
 
     // Update the origin

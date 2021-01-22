@@ -10,6 +10,10 @@ inputs:
   api-token:
     description: 'Personal API Token'
     required: true
+  github-name:
+    description: 'Name shown in the commit'
+  github-email:
+    description: 'Email shown in the commit'
 runs:
   using: 'node12'
   main: 'index.js'

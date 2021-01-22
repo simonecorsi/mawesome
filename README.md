@@ -1,20 +1,41 @@
-# My Awesome list
+# My Awesome List
 
-This action query the github api to get starred list of the user and then generates a list ordered by languages. 
+This action query the github api to get starred list of the user and then generates a list ordered by languages.
 
 You can see an example of the output at my own [simonecorsi/awesome](https://github.com/simonecorsi/awesome)
 
-## Setup
+## Table of Contents
 
-To use this action you have to create your own repository (eg: `yourname/awesome`), then create a new empty action in it and then use the [example workflow](#example-workflow) below as a starting point.
+<!-- toc -->
 
-## Inputs
+- [Table of Contents](#table-of-contents)
+- [Documentation](#documentation)
+  - [Requirements](#requirements)
+  - [Configuration](#configuration)
+    - [`api-token`](#api-token)
+- [Example workflow](#example-workflow)
 
-### `github-token`
+<!-- tocstop -->
 
-The github workflow token is mandatory 
+## Documentation
 
-### `api-token`
+### Requirements
+
+-   An empty repository
+-   A personal github api key
+
+### Configuration
+
+The service can be configured setting the appropriate environment variables or writing an `.env` file.
+
+| Variable       | Description                                 | Default                          |
+| -------------- | ------------------------------------------- | -------------------------------- |
+| `api-token`    | Personal github api token.                  | `${{ secrets.API_TOKEN }}`       |
+| `github-token` | Action Token                                | `${{ secrets.GITHUB_TOKEN }}`    |
+| `github-name`  | Name used for the commit, default to action | Github Action                    |
+| `github-email` | email used for commit, default to action    | actions@users.noreply.github.com |
+
+#### `api-token`
 
 The Personal API Access Token is mandatory to fetch stars from the API without incurring in Rate Limits.
 
@@ -36,8 +57,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Awesome generator
-        uses: simonecorsi/mawesome@lastest
+        uses: simonecorsi/mawesome@latest
         with:
           api-token: ${{ secrets.API_TOKEN }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-email: ${{ secrets.USER_EMAIL }}
+          github-name: ${{ github.repository_owner }}
+
 ```

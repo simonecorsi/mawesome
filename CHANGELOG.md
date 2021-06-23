@@ -1,5 +1,14 @@
+## <small>1.0.37 (2021-06-23)</small>
+
+* build(deps): bump glob-parent from 5.1.1 to 5.1.2 ([e558e07](https://github.com/simonecorsi/mawesome/commit/e558e07))
+* build(deps): bump hosted-git-info from 2.8.8 to 2.8.9 ([110a667](https://github.com/simonecorsi/mawesome/commit/110a667))
+* build(deps): bump normalize-url from 4.5.0 to 4.5.1 ([202d6fe](https://github.com/simonecorsi/mawesome/commit/202d6fe))
+
+
+
 ## <small>1.0.36 (2021-06-23)</small>
 
+* chore(release): v1.0.36 ([9c0b622](https://github.com/simonecorsi/mawesome/commit/9c0b622))
 * feat: saving json data for future use ([7ceb9cb](https://github.com/simonecorsi/mawesome/commit/7ceb9cb))
 
 
@@ -22,14 +31,6 @@
 * chore(release): v1.0.33 ([fc187df](https://github.com/simonecorsi/mawesome/commit/fc187df))
 * build(deps): bump handlebars from 4.7.6 to 4.7.7 ([012928b](https://github.com/simonecorsi/mawesome/commit/012928b))
 * build(deps): bump lodash from 4.17.20 to 4.17.21 ([1015179](https://github.com/simonecorsi/mawesome/commit/1015179))
-
-
-
-## <small>1.0.32 (2021-01-22)</small>
-
-* chore: removed unused npm packages ([3ad1555](https://github.com/simonecorsi/mawesome/commit/3ad1555))
-* chore(release): v1.0.32 ([fe15d93](https://github.com/simonecorsi/mawesome/commit/fe15d93))
-* docs: added documentation ([5753aef](https://github.com/simonecorsi/mawesome/commit/5753aef))
 
 
 

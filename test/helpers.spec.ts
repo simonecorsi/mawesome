@@ -38,7 +38,7 @@ import {
   apiGetStar,
   paginate,
   generateMd,
-  pushNewFile,
+  pushNewFiles,
 } from '../src/helpers';
 
 test('wait should wait', async (t) => {
@@ -97,7 +97,7 @@ test('generateMd should create TOC', async (t) => {
 });
 
 test('should push', async (t) => {
-  await pushNewFile('# title');
+  await pushNewFiles([{filename: "README.md", data: '# title'}]);
   t.true(writeFile.calledWith('README.md', '# title'));
   t.true(pull.called);
   t.true(add.calledWith('README.md'));

@@ -1,11 +1,13 @@
 import * as core from '@actions/core';
+import { data } from 'remark';
 
 import {
   renderer,
   paginate,
   REPO_USERNAME,
   generateMd,
-  pushNewFile,
+  pushNewFiles,
+  MARKDOWN_FILENAME,
 } from './helpers';
 
 import type { SortedLanguageList, Stars, Star } from './types';
@@ -41,7 +43,16 @@ export async function main(): Promise<any> {
 
   const markdown: string = await generateMd(rendered);
 
-  await pushNewFile(markdown);
+  await pushNewFiles([
+    {
+      filename: MARKDOWN_FILENAME,
+      data: markdown,
+    },
+    {
+      filename: 'data.json',
+      data: JSON.stringify(sortedByLanguages, null, 2),
+    },
+  ]);
 }
 
 export async function run(): Promise<any> {

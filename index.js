@@ -21361,7 +21361,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.pushNewFile = exports.OUTPUT_FILENAME = exports.generateMd = exports.paginate = exports.API_STARRED_URL = exports.REPO_USERNAME = exports.apiGetStar = exports.renderer = exports.isLastPage = exports.wait = void 0;
+exports.pushNewFiles = exports.MARKDOWN_FILENAME = exports.generateMd = exports.paginate = exports.API_STARRED_URL = exports.REPO_USERNAME = exports.apiGetStar = exports.renderer = exports.isLastPage = exports.wait = void 0;
 const ejs_1 = __importDefault(__nccwpck_require__(8431));
 const core = __importStar(__nccwpck_require__(2186));
 const remark_1 = __importDefault(__nccwpck_require__(2081));
@@ -21433,17 +21433,21 @@ function generateMd(data) {
     });
 }
 exports.generateMd = generateMd;
-exports.OUTPUT_FILENAME = core.getInput('output-filename') || 'README.md';
-function pushNewFile(markdown) {
+exports.MARKDOWN_FILENAME = core.getInput('output-filename') || 'README.md';
+function pushNewFiles(files = []) {
     return __awaiter(this, void 0, void 0, function* () {
-        yield fsp.writeFile(exports.OUTPUT_FILENAME, markdown);
+        if (!files.length)
+            return;
         yield git_1.default.pull();
-        yield git_1.default.add(exports.OUTPUT_FILENAME);
-        yield git_1.default.commit(`chore(${exports.OUTPUT_FILENAME}): updated ${exports.OUTPUT_FILENAME}`);
+        yield Promise.all(files.map(({ filename, data }) => __awaiter(this, void 0, void 0, function* () {
+            yield fsp.writeFile(filename, data);
+            yield git_1.default.add(filename);
+            yield git_1.default.commit(`chore(${filename}): updated ${filename}`);
+        })));
         yield git_1.default.push();
     });
 }
-exports.pushNewFile = pushNewFile;
+exports.pushNewFiles = pushNewFiles;
 
 
 /***/ }),
@@ -21511,7 +21515,16 @@ function main() {
             updatedAt: Date.now(),
         });
         const markdown = yield helpers_1.generateMd(rendered);
-        yield helpers_1.pushNewFile(markdown);
+        yield helpers_1.pushNewFiles([
+            {
+                filename: helpers_1.MARKDOWN_FILENAME,
+                data: markdown,
+            },
+            {
+                filename: 'data.json',
+                data: JSON.stringify(sortedByLanguages, null, 2),
+            },
+        ]);
     });
 }
 exports.main = main;

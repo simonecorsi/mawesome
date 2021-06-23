@@ -1,5 +1,19 @@
+## <small>1.0.36 (2021-06-23)</small>
+
+* feat: saving json data for future use ([7ceb9cb](https://github.com/simonecorsi/mawesome/commit/7ceb9cb))
+
+
+
+## <small>1.0.35 (2021-06-22)</small>
+
+* chore(release): v1.0.35 ([cee1906](https://github.com/simonecorsi/mawesome/commit/cee1906))
+* build(deps): bump set-getter from 0.1.0 to 0.1.1 ([970d603](https://github.com/simonecorsi/mawesome/commit/970d603))
+
+
+
 ## <small>1.0.34 (2021-05-19)</small>
 
+* chore(release): v1.0.34 ([ab02c0d](https://github.com/simonecorsi/mawesome/commit/ab02c0d))
 
 
 
@@ -16,20 +30,6 @@
 * chore: removed unused npm packages ([3ad1555](https://github.com/simonecorsi/mawesome/commit/3ad1555))
 * chore(release): v1.0.32 ([fe15d93](https://github.com/simonecorsi/mawesome/commit/fe15d93))
 * docs: added documentation ([5753aef](https://github.com/simonecorsi/mawesome/commit/5753aef))
-
-
-
-## <small>1.0.31 (2021-01-21)</small>
-
-* chore(release): v1.0.31 ([903c070](https://github.com/simonecorsi/mawesome/commit/903c070))
-* feat: added user/email input for commiting ([58a7dc1](https://github.com/simonecorsi/mawesome/commit/58a7dc1))
-
-
-
-## <small>1.0.30 (2021-01-16)</small>
-
-* chore(release): v1.0.30 ([a5f15da](https://github.com/simonecorsi/mawesome/commit/a5f15da))
-* fix: removed push ([7f42ca0](https://github.com/simonecorsi/mawesome/commit/7f42ca0))
 
 
 

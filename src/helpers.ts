@@ -77,12 +77,26 @@ export function generateMd(data: string): Promise<string> {
   });
 }
 
-export const OUTPUT_FILENAME: string =
+export const MARKDOWN_FILENAME: string =
   core.getInput('output-filename') || 'README.md';
-export async function pushNewFile(markdown: string): Promise<any> {
-  await fsp.writeFile(OUTPUT_FILENAME, markdown);
+
+type File = {
+  filename: string;
+  data: string;
+};
+
+export async function pushNewFiles(files: File[] = []): Promise<any> {
+  if (!files.length) return;
+
   await git.pull();
-  await git.add(OUTPUT_FILENAME);
-  await git.commit(`chore(${OUTPUT_FILENAME}): updated ${OUTPUT_FILENAME}`);
+
+  await Promise.all(
+    files.map(async ({ filename, data }) => {
+      await fsp.writeFile(filename, data);
+      await git.add(filename);
+      await git.commit(`chore(${filename}): updated ${filename}`);
+    })
+  );
+
   await git.push();
 }

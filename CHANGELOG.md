@@ -1,5 +1,12 @@
+## <small>1.0.39 (2021-08-31)</small>
+
+* build(deps): bump path-parse from 1.0.6 to 1.0.7 ([ef137b5](https://github.com/simonecorsi/mawesome/commit/ef137b5))
+
+
+
 ## <small>1.0.38 (2021-06-23)</small>
 
+* chore(release): v1.0.38 ([3e66d85](https://github.com/simonecorsi/mawesome/commit/3e66d85))
 
 
 
@@ -23,12 +30,6 @@
 
 * chore(release): v1.0.35 ([cee1906](https://github.com/simonecorsi/mawesome/commit/cee1906))
 * build(deps): bump set-getter from 0.1.0 to 0.1.1 ([970d603](https://github.com/simonecorsi/mawesome/commit/970d603))
-
-
-
-## <small>1.0.34 (2021-05-19)</small>
-
-* chore(release): v1.0.34 ([ab02c0d](https://github.com/simonecorsi/mawesome/commit/ab02c0d))
 
 
 

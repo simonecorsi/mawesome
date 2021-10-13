@@ -33,11 +33,15 @@ export async function renderer(
 }
 
 export function getNextPage(links: PaginationLink[]): string | null {
-  const link = links.find((l) => l.rel === 'next');
-  if (!link) return null;
-  const match = link.uri.match(/page=([0-9]*)/);
-  if (!match) return null;
-  return match[1];
+  const next = links.find((l) => l.rel === 'next');
+  const last = links.find((l) => l.rel === 'last');
+  if (!next || !last) return null;
+  const matchNext = next.uri.match(/page=([0-9]*)/);
+  const matchLast = next.uri.match(/page=([0-9]*)/);
+
+  if (!matchNext || !matchLast) return null;
+  if (matchNext[1] === matchLast[1]) return null;
+  return matchNext[1];
 }
 
 async function* paginateStars(url: string): AsyncGenerator<Stars> {
@@ -49,10 +53,8 @@ async function* paginateStars(url: string): AsyncGenerator<Stars> {
           page: nextPage,
         },
       });
-      console.log('body, typeof body :>> ', body, typeof body);
       yield (body as unknown) as Stars;
       nextPage = getNextPage(link.parse(headers.link).refs);
-      console.log('sleeping 1second to avoid rate-limit');
       await wait(1000); // avoid limits
     } catch (e) {
       console.error(e);

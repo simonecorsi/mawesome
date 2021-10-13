@@ -7,7 +7,7 @@ sinon.replace(core, 'getInput', sinon.fake());
 
 import GithubApi from '../src/api';
 const GithubApiFake = sinon.fake((rul) => ({
-  body: 'data',
+  body: [],
   headers: {
     link:
       '<https://api.github.com/user/5617452/starred?page=2>; rel="next", <https://api.github.com/user/5617452/starred?page=2>; rel="last"',
@@ -32,11 +32,9 @@ const writeFile = sinon.fake();
 sinon.replace(fsp, 'writeFile', writeFile);
 
 import {
-  isLastPage,
   wait,
   renderer,
   apiGetStar,
-  paginate,
   generateMd,
   pushNewFiles,
 } from '../src/helpers';
@@ -46,40 +44,15 @@ test('wait should wait', async (t) => {
   t.pass();
 });
 
-test('isLastPage', (t) => {
-  t.true(
-    isLastPage({
-      next: 'last',
-      last: 'last',
-    })
-  );
-  t.false(
-    isLastPage({
-      next: 'last',
-      last: undefined,
-    })
-  );
-});
-
 test('renderer should render', async (t) => {
   const output = await renderer({ variable: 123 }, 'Test: <%= variable %>');
   t.is(output, 'Test: 123');
 });
 
 test('apiGetStar', async (t) => {
-  let { data, links } = await apiGetStar('url');
+  let stars = await apiGetStar('url');
   t.true(GithubApiFake.called);
-  t.is(data, 'data');
-  t.deepEqual(links, {
-    last: 'https://api.github.com/user/5617452/starred?page=2',
-    next: 'https://api.github.com/user/5617452/starred?page=2',
-  });
-});
-
-test('paginate', async (t) => {
-  await paginate();
-  const res = await paginate();
-  t.is(res, null);
+  t.true(Array.isArray(stars));
 });
 
 test('generateMd should create TOC', async (t) => {
@@ -97,7 +70,7 @@ test('generateMd should create TOC', async (t) => {
 });
 
 test('should push', async (t) => {
-  await pushNewFiles([{filename: "README.md", data: '# title'}]);
+  await pushNewFiles([{ filename: 'README.md', data: '# title' }]);
   t.true(writeFile.calledWith('README.md', '# title'));
   t.true(pull.called);
   t.true(add.calledWith('README.md'));

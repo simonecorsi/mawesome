@@ -5,14 +5,11 @@ export type SortedLanguageList = {
 };
 
 export type PaginationLink = {
-  next: string;
-  last: string | undefined | null;
+  uri: string;
+  rel: 'next' | 'last' | 'prev' | 'first';
 };
 
 export type Stars = Endpoints['GET /user/starred']['response']['data'];
 export type Star = Stars[number] | { language: string };
 
-export type ApiGetStarResponse = {
-  links: PaginationLink;
-  data: Stars;
-};
+export type ApiGetStarResponse = Stars;

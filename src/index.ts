@@ -1,26 +1,18 @@
 import * as core from '@actions/core';
-import { data } from 'remark';
 
 import {
   renderer,
-  paginate,
   REPO_USERNAME,
   generateMd,
   pushNewFiles,
   MARKDOWN_FILENAME,
+  apiGetStar,
 } from './helpers';
 
 import type { SortedLanguageList, Stars, Star } from './types';
 
 export async function main(): Promise<any> {
-  let results: Stars = [];
-
-  while (true) {
-    // sorry.
-    const r = await paginate();
-    if (!r || r === null) break;
-    results = results.concat(r.data);
-  }
+  const results: Stars = await apiGetStar();
 
   const sortedByLanguages = results.reduce(
     (acc: SortedLanguageList, val: Star) => {

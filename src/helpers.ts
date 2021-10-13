@@ -1,3 +1,4 @@
+import fs from 'fs';
 import ejs from 'ejs';
 import * as core from '@actions/core';
 import remark from 'remark';
@@ -8,18 +9,15 @@ import GithubApi from './api';
 import link from './link';
 import git from './git';
 
-import type { PaginationLink, ApiGetStarResponse } from './types';
+import type { PaginationLink, ApiGetStarResponse, Stars } from './types';
 
-import fs from 'fs';
+export const REPO_USERNAME = process.env.GITHUB_REPOSITORY?.split('/')[0];
+export const API_STARRED_URL = `${process.env.GITHUB_API_URL}/users/${REPO_USERNAME}/starred`;
 
 const fsp = fs.promises;
 
 export function wait(time = 200): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, time));
-}
-
-export function isLastPage(links: PaginationLink): boolean {
-  return links.next === links.last;
 }
 
 export async function renderer(
@@ -34,32 +32,43 @@ export async function renderer(
   }
 }
 
-export async function apiGetStar(url: string): Promise<ApiGetStarResponse> {
-  const { headers, body }: any = await GithubApi.get(url);
-  return {
-    data: body,
-    links: link.parse(headers.link).refs.reduce(
-      (acc, val) => ({
-        ...acc,
-        [val.rel]: val.uri,
-      }),
-      {}
-    ),
-  };
+export function getNextPage(links: PaginationLink[]): string | null {
+  const link = links.find((l) => l.rel === 'next');
+  if (!link) return null;
+  const match = link.uri.match(/page=([0-9]*)/);
+  if (!match) return null;
+  return match[1];
 }
 
-export const REPO_USERNAME = process.env.GITHUB_REPOSITORY?.split('/')[0];
-export const API_STARRED_URL = `${process.env.GITHUB_API_URL}/users/${REPO_USERNAME}/starred`;
+async function* paginateStars(url: string): AsyncGenerator<Stars> {
+  let nextPage: string | null = '1';
+  while (nextPage) {
+    try {
+      const { headers, body } = await GithubApi.get(url, {
+        searchParams: {
+          page: nextPage,
+        },
+      });
+      console.log('body, typeof body :>> ', body, typeof body);
+      yield (body as unknown) as Stars;
+      nextPage = getNextPage(link.parse(headers.link).refs);
+      console.log('sleeping 1second to avoid rate-limit');
+      await wait(1000); // avoid limits
+    } catch (e) {
+      console.error(e);
+      break;
+    }
+  }
+}
 
-let links: PaginationLink = {
-  next: API_STARRED_URL,
-  last: undefined,
-};
-export async function paginate(): Promise<ApiGetStarResponse | null> {
-  if (isLastPage(links)) return null;
-  const r = await apiGetStar(links.next);
-  links = r.links;
-  return r;
+export async function apiGetStar(
+  url: string = API_STARRED_URL
+): Promise<ApiGetStarResponse> {
+  let data: Stars[] = [];
+  for await (const stars of paginateStars(url)) {
+    data = data.concat(stars);
+  }
+  return (data as unknown) as Stars;
 }
 
 export function generateMd(data: string): Promise<string> {

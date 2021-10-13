@@ -21356,12 +21356,32 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __await = (this && this.__await) || function (v) { return this instanceof __await ? (this.v = v, this) : new __await(v); }
+var __asyncGenerator = (this && this.__asyncGenerator) || function (thisArg, _arguments, generator) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var g = generator.apply(thisArg, _arguments || []), i, q = [];
+    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
+    function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+    function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
+    function fulfill(value) { resume("next", value); }
+    function reject(value) { resume("throw", value); }
+    function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+};
+var __asyncValues = (this && this.__asyncValues) || function (o) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var m = o[Symbol.asyncIterator], i;
+    return m ? m.call(o) : (o = typeof __values === "function" ? __values(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i);
+    function verb(n) { i[n] = o[n] && function (v) { return new Promise(function (resolve, reject) { v = o[n](v), settle(resolve, reject, v.done, v.value); }); }; }
+    function settle(resolve, reject, d, v) { Promise.resolve(v).then(function(v) { resolve({ value: v, done: d }); }, reject); }
+};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.pushNewFiles = exports.MARKDOWN_FILENAME = exports.generateMd = exports.paginate = exports.API_STARRED_URL = exports.REPO_USERNAME = exports.apiGetStar = exports.renderer = exports.isLastPage = exports.wait = void 0;
+exports.pushNewFiles = exports.MARKDOWN_FILENAME = exports.generateMd = exports.apiGetStar = exports.getNextPage = exports.renderer = exports.wait = exports.API_STARRED_URL = exports.REPO_USERNAME = void 0;
+const fs_1 = __importDefault(__nccwpck_require__(5747));
 const ejs_1 = __importDefault(__nccwpck_require__(8431));
 const core = __importStar(__nccwpck_require__(2186));
 const remark_1 = __importDefault(__nccwpck_require__(2081));
@@ -21370,16 +21390,13 @@ const template_1 = __importDefault(__nccwpck_require__(3932));
 const api_1 = __importDefault(__nccwpck_require__(8229));
 const link_1 = __importDefault(__nccwpck_require__(9338));
 const git_1 = __importDefault(__nccwpck_require__(6350));
-const fs_1 = __importDefault(__nccwpck_require__(5747));
+exports.REPO_USERNAME = (_a = process.env.GITHUB_REPOSITORY) === null || _a === void 0 ? void 0 : _a.split('/')[0];
+exports.API_STARRED_URL = `${process.env.GITHUB_API_URL}/users/${exports.REPO_USERNAME}/starred`;
 const fsp = fs_1.default.promises;
 function wait(time = 200) {
     return new Promise((resolve) => setTimeout(resolve, time));
 }
 exports.wait = wait;
-function isLastPage(links) {
-    return links.next === links.last;
-}
-exports.isLastPage = isLastPage;
 function renderer(data, templateString = template_1.default) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -21392,32 +21409,62 @@ function renderer(data, templateString = template_1.default) {
     });
 }
 exports.renderer = renderer;
-function apiGetStar(url) {
+function getNextPage(links) {
+    const next = links.find((l) => l.rel === 'next');
+    const last = links.find((l) => l.rel === 'last');
+    if (!next || !last)
+        return null;
+    const matchNext = next.uri.match(/page=([0-9]*)/);
+    const matchLast = next.uri.match(/page=([0-9]*)/);
+    if (!matchNext || !matchLast)
+        return null;
+    if (matchNext[1] === matchLast[1])
+        return null;
+    return matchNext[1];
+}
+exports.getNextPage = getNextPage;
+function paginateStars(url) {
+    return __asyncGenerator(this, arguments, function* paginateStars_1() {
+        let nextPage = '1';
+        while (nextPage) {
+            try {
+                const { headers, body } = yield __await(api_1.default.get(url, {
+                    searchParams: {
+                        page: nextPage,
+                    },
+                }));
+                yield yield __await(body);
+                nextPage = getNextPage(link_1.default.parse(headers.link).refs);
+                yield __await(wait(1000)); // avoid limits
+            }
+            catch (e) {
+                console.error(e);
+                break;
+            }
+        }
+    });
+}
+function apiGetStar(url = exports.API_STARRED_URL) {
+    var e_1, _a;
     return __awaiter(this, void 0, void 0, function* () {
-        const { headers, body } = yield api_1.default.get(url);
-        return {
-            data: body,
-            links: link_1.default.parse(headers.link).refs.reduce((acc, val) => (Object.assign(Object.assign({}, acc), { [val.rel]: val.uri })), {}),
-        };
+        let data = [];
+        try {
+            for (var _b = __asyncValues(paginateStars(url)), _c; _c = yield _b.next(), !_c.done;) {
+                const stars = _c.value;
+                data = data.concat(stars);
+            }
+        }
+        catch (e_1_1) { e_1 = { error: e_1_1 }; }
+        finally {
+            try {
+                if (_c && !_c.done && (_a = _b.return)) yield _a.call(_b);
+            }
+            finally { if (e_1) throw e_1.error; }
+        }
+        return data;
     });
 }
 exports.apiGetStar = apiGetStar;
-exports.REPO_USERNAME = (_a = process.env.GITHUB_REPOSITORY) === null || _a === void 0 ? void 0 : _a.split('/')[0];
-exports.API_STARRED_URL = `${process.env.GITHUB_API_URL}/users/${exports.REPO_USERNAME}/starred`;
-let links = {
-    next: exports.API_STARRED_URL,
-    last: undefined,
-};
-function paginate() {
-    return __awaiter(this, void 0, void 0, function* () {
-        if (isLastPage(links))
-            return null;
-        const r = yield apiGetStar(links.next);
-        links = r.links;
-        return r;
-    });
-}
-exports.paginate = paginate;
 function generateMd(data) {
     return new Promise((resolve) => {
         remark_1.default()
@@ -21491,14 +21538,7 @@ const core = __importStar(__nccwpck_require__(2186));
 const helpers_1 = __nccwpck_require__(3015);
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
-        let results = [];
-        while (true) {
-            // sorry.
-            const r = yield helpers_1.paginate();
-            if (!r || r === null)
-                break;
-            results = results.concat(r.data);
-        }
+        const results = yield helpers_1.apiGetStar();
         const sortedByLanguages = results.reduce((acc, val) => {
             const language = val.language || 'generic';
             if (!acc[language]) {

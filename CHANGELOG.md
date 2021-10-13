@@ -1,5 +1,13 @@
+## <small>1.0.40 (2021-10-13)</small>
+
+* fix: fixes while exit condition ([8f9b4cc](https://github.com/simonecorsi/mawesome/commit/8f9b4cc))
+* feat: paginates using async generator ([51da6c2](https://github.com/simonecorsi/mawesome/commit/51da6c2))
+
+
+
 ## <small>1.0.39 (2021-08-31)</small>
 
+* chore(release): v1.0.39 ([f7a8341](https://github.com/simonecorsi/mawesome/commit/f7a8341))
 * build(deps): bump path-parse from 1.0.6 to 1.0.7 ([ef137b5](https://github.com/simonecorsi/mawesome/commit/ef137b5))
 
 
@@ -23,13 +31,6 @@
 
 * chore(release): v1.0.36 ([9c0b622](https://github.com/simonecorsi/mawesome/commit/9c0b622))
 * feat: saving json data for future use ([7ceb9cb](https://github.com/simonecorsi/mawesome/commit/7ceb9cb))
-
-
-
-## <small>1.0.35 (2021-06-22)</small>
-
-* chore(release): v1.0.35 ([cee1906](https://github.com/simonecorsi/mawesome/commit/cee1906))
-* build(deps): bump set-getter from 0.1.0 to 0.1.1 ([970d603](https://github.com/simonecorsi/mawesome/commit/970d603))
 
 
 

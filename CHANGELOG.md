@@ -1,5 +1,12 @@
+## <small>1.0.42 (2021-10-14)</small>
+
+* fix(paginator): last page now correctly matches rex ([dcf9898](https://github.com/simonecorsi/mawesome/commit/dcf9898))
+
+
+
 ## <small>1.0.41 (2021-10-14)</small>
 
+* chore(release): v1.0.41 ([884fc90](https://github.com/simonecorsi/mawesome/commit/884fc90))
 * test: fixs suite ([b97833f](https://github.com/simonecorsi/mawesome/commit/b97833f))
 * fix: should avoid index lock ([1d6848c](https://github.com/simonecorsi/mawesome/commit/1d6848c))
 
@@ -23,15 +30,6 @@
 ## <small>1.0.38 (2021-06-23)</small>
 
 * chore(release): v1.0.38 ([3e66d85](https://github.com/simonecorsi/mawesome/commit/3e66d85))
-
-
-
-## <small>1.0.37 (2021-06-23)</small>
-
-* chore(release): v1.0.37 ([1643092](https://github.com/simonecorsi/mawesome/commit/1643092))
-* build(deps): bump glob-parent from 5.1.1 to 5.1.2 ([e558e07](https://github.com/simonecorsi/mawesome/commit/e558e07))
-* build(deps): bump hosted-git-info from 2.8.8 to 2.8.9 ([110a667](https://github.com/simonecorsi/mawesome/commit/110a667))
-* build(deps): bump normalize-url from 4.5.0 to 4.5.1 ([202d6fe](https://github.com/simonecorsi/mawesome/commit/202d6fe))
 
 
 

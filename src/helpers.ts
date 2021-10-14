@@ -37,8 +37,7 @@ export function getNextPage(links: PaginationLink[]): string | null {
   const last = links.find((l) => l.rel === 'last');
   if (!next || !last) return null;
   const matchNext = next.uri.match(/page=([0-9]*)/);
-  const matchLast = next.uri.match(/page=([0-9]*)/);
-
+  const matchLast = last.uri.match(/page=([0-9]*)/);
   if (!matchNext || !matchLast) return null;
   if (matchNext[1] === matchLast[1]) return null;
   return matchNext[1];

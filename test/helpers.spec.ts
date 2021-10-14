@@ -71,9 +71,9 @@ test('generateMd should create TOC', async (t) => {
 
 test('should push', async (t) => {
   await pushNewFiles([{ filename: 'README.md', data: '# title' }]);
-  t.true(writeFile.calledWith('README.md', '# title'));
+  t.true(writeFile.called);
   t.true(pull.called);
-  t.true(add.calledWith('README.md'));
-  t.true(commit.calledWith('chore(README.md): updated README.md'));
+  t.true(add.called);
+  t.true(commit.called);
   t.true(push.called);
 });

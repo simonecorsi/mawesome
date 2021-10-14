@@ -21489,8 +21489,8 @@ function pushNewFiles(files = []) {
         yield Promise.all(files.map(({ filename, data }) => __awaiter(this, void 0, void 0, function* () {
             yield fsp.writeFile(filename, data);
             yield git_1.default.add(filename);
-            yield git_1.default.commit(`chore(${filename}): updated ${filename}`);
         })));
+        yield git_1.default.commit(`chore(updates): updated entries in files`);
         yield git_1.default.push();
     });
 }

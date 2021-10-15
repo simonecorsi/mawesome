@@ -9,7 +9,7 @@ import GithubApi from './api';
 import link from './link';
 import git from './git';
 
-import type { PaginationLink, ApiGetStarResponse, Stars } from './types';
+import type { PaginationLink, ApiGetStarResponse, Stars, Star } from './types';
 
 export const REPO_USERNAME = process.env.GITHUB_REPOSITORY?.split('/')[0];
 export const API_STARRED_URL = `${process.env.GITHUB_API_URL}/users/${REPO_USERNAME}/starred`;
@@ -65,9 +65,37 @@ async function* paginateStars(url: string): AsyncGenerator<Stars> {
 export async function apiGetStar(
   url: string = API_STARRED_URL
 ): Promise<ApiGetStarResponse> {
-  let data: Stars[] = [];
+  const data: Partial<Star>[] = [];
   for await (const stars of paginateStars(url)) {
-    data = data.concat(stars);
+    for (const star of stars) {
+      data.push({
+        id: star.id,
+        node_id: star.node_id,
+        name: star.name,
+        full_name: star.full_name,
+        owner: {
+          login: star?.owner?.login,
+          id: star?.owner?.id,
+          avatar_url: star?.owner?.avatar_url,
+          url: star?.owner?.url,
+          html_url: star?.owner?.html_url,
+        },
+        html_url: star.html_url,
+        description: star.description,
+        url: star.url,
+        languages_url: star.languages_url,
+        created_at: star.created_at,
+        updated_at: star.updated_at,
+        git_url: star.git_url,
+        ssh_url: star.ssh_url,
+        clone_url: star.clone_url,
+        homepage: star.homepage,
+        stargazers_count: star.stargazers_count,
+        watchers_count: star.watchers_count,
+        language: star.language,
+        topics: star.topics,
+      } as Partial<Star>);
+    }
   }
   return (data as unknown) as Stars;
 }

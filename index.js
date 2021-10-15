@@ -21446,18 +21446,47 @@ function paginateStars(url) {
 }
 function apiGetStar(url = exports.API_STARRED_URL) {
     var e_1, _a;
+    var _b, _c, _d, _e, _f;
     return __awaiter(this, void 0, void 0, function* () {
-        let data = [];
+        const data = [];
         try {
-            for (var _b = __asyncValues(paginateStars(url)), _c; _c = yield _b.next(), !_c.done;) {
-                const stars = _c.value;
-                data = data.concat(stars);
+            for (var _g = __asyncValues(paginateStars(url)), _h; _h = yield _g.next(), !_h.done;) {
+                const stars = _h.value;
+                for (const star of stars) {
+                    data.push({
+                        id: star.id,
+                        node_id: star.node_id,
+                        name: star.name,
+                        full_name: star.full_name,
+                        owner: {
+                            login: (_b = star === null || star === void 0 ? void 0 : star.owner) === null || _b === void 0 ? void 0 : _b.login,
+                            id: (_c = star === null || star === void 0 ? void 0 : star.owner) === null || _c === void 0 ? void 0 : _c.id,
+                            avatar_url: (_d = star === null || star === void 0 ? void 0 : star.owner) === null || _d === void 0 ? void 0 : _d.avatar_url,
+                            url: (_e = star === null || star === void 0 ? void 0 : star.owner) === null || _e === void 0 ? void 0 : _e.url,
+                            html_url: (_f = star === null || star === void 0 ? void 0 : star.owner) === null || _f === void 0 ? void 0 : _f.html_url,
+                        },
+                        html_url: star.html_url,
+                        description: star.description,
+                        url: star.url,
+                        languages_url: star.languages_url,
+                        created_at: star.created_at,
+                        updated_at: star.updated_at,
+                        git_url: star.git_url,
+                        ssh_url: star.ssh_url,
+                        clone_url: star.clone_url,
+                        homepage: star.homepage,
+                        stargazers_count: star.stargazers_count,
+                        watchers_count: star.watchers_count,
+                        language: star.language,
+                        topics: star.topics,
+                    });
+                }
             }
         }
         catch (e_1_1) { e_1 = { error: e_1_1 }; }
         finally {
             try {
-                if (_c && !_c.done && (_a = _b.return)) yield _a.call(_b);
+                if (_h && !_h.done && (_a = _g.return)) yield _a.call(_g);
             }
             finally { if (e_1) throw e_1.error; }
         }

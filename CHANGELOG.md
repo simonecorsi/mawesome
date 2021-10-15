@@ -1,5 +1,12 @@
+## <small>1.0.43 (2021-10-15)</small>
+
+* feat: reduce json output size ([94635fe](https://github.com/simonecorsi/mawesome/commit/94635fe))
+
+
+
 ## <small>1.0.42 (2021-10-14)</small>
 
+* chore(release): v1.0.42 ([5b36813](https://github.com/simonecorsi/mawesome/commit/5b36813))
 * fix(paginator): last page now correctly matches rex ([dcf9898](https://github.com/simonecorsi/mawesome/commit/dcf9898))
 
 
@@ -24,12 +31,6 @@
 
 * chore(release): v1.0.39 ([f7a8341](https://github.com/simonecorsi/mawesome/commit/f7a8341))
 * build(deps): bump path-parse from 1.0.6 to 1.0.7 ([ef137b5](https://github.com/simonecorsi/mawesome/commit/ef137b5))
-
-
-
-## <small>1.0.38 (2021-06-23)</small>
-
-* chore(release): v1.0.38 ([3e66d85](https://github.com/simonecorsi/mawesome/commit/3e66d85))
 
 
 

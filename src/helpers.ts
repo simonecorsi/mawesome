@@ -129,12 +129,10 @@ export async function pushNewFiles(files: File[] = []): Promise<any> {
   await git.pull();
 
   await Promise.all(
-    files.map(async ({ filename, data }) => {
-      await fsp.writeFile(filename, data);
-      await git.add(filename);
-    })
+    files.map(({ filename, data }) => fsp.writeFile(filename, data))
   );
 
+  await git.add(files.map(({ filename }) => filename));
   await git.commit(`chore(updates): updated entries in files`);
   await git.push();
 }

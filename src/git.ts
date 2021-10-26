@@ -60,7 +60,15 @@ class Git {
   config = (prop: string, value: string) =>
     this.exec(`config ${prop} "${value}"`);
 
-  add = (file: string) => this.exec(`add ${file}`);
+  add = (file: string | string[]) => {
+    let str = '';
+    if (Array.isArray(file)) {
+      file.map((f) => (str += ` ${f}`));
+    } else {
+      str = file;
+    }
+    return this.exec(`add ${str}`);
+  };
 
   commit = (message: string) => this.exec(`commit -m "${message}"`);
 

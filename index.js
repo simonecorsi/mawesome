@@ -21291,7 +21291,16 @@ class Git {
             }));
         };
         this.config = (prop, value) => this.exec(`config ${prop} "${value}"`);
-        this.add = (file) => this.exec(`add ${file}`);
+        this.add = (file) => {
+            let str = '';
+            if (Array.isArray(file)) {
+                file.map((f) => (str += ` ${f}`));
+            }
+            else {
+                str = file;
+            }
+            return this.exec(`add ${str}`);
+        };
         this.commit = (message) => this.exec(`commit -m "${message}"`);
         this.pull = () => __awaiter(this, void 0, void 0, function* () {
             const args = ['pull'];
@@ -21515,10 +21524,8 @@ function pushNewFiles(files = []) {
         if (!files.length)
             return;
         yield git_1.default.pull();
-        yield Promise.all(files.map(({ filename, data }) => __awaiter(this, void 0, void 0, function* () {
-            yield fsp.writeFile(filename, data);
-            yield git_1.default.add(filename);
-        })));
+        yield Promise.all(files.map(({ filename, data }) => fsp.writeFile(filename, data)));
+        yield git_1.default.add(files.map(({ filename }) => filename));
         yield git_1.default.commit(`chore(updates): updated entries in files`);
         yield git_1.default.push();
     });

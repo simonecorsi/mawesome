@@ -1,5 +1,12 @@
+## <small>1.0.44 (2021-10-26)</small>
+
+* feat: git add multiple files at once ([4aef61f](https://github.com/simonecorsi/mawesome/commit/4aef61f))
+
+
+
 ## <small>1.0.43 (2021-10-15)</small>
 
+* chore(release): v1.0.43 ([5e0ef82](https://github.com/simonecorsi/mawesome/commit/5e0ef82))
 * feat: reduce json output size ([94635fe](https://github.com/simonecorsi/mawesome/commit/94635fe))
 
 
@@ -24,13 +31,6 @@
 * chore(release): v1.0.40 ([0e016f4](https://github.com/simonecorsi/mawesome/commit/0e016f4))
 * fix: fixes while exit condition ([8f9b4cc](https://github.com/simonecorsi/mawesome/commit/8f9b4cc))
 * feat: paginates using async generator ([51da6c2](https://github.com/simonecorsi/mawesome/commit/51da6c2))
-
-
-
-## <small>1.0.39 (2021-08-31)</small>
-
-* chore(release): v1.0.39 ([f7a8341](https://github.com/simonecorsi/mawesome/commit/f7a8341))
-* build(deps): bump path-parse from 1.0.6 to 1.0.7 ([ef137b5](https://github.com/simonecorsi/mawesome/commit/ef137b5))
 
 
 

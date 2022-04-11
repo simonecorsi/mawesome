@@ -57,7 +57,7 @@
   },
   "dependencies": {
     "@actions/core": "^1.2.6",
-    "@actions/exec": "^1.0.4",
+    "@actions/exec": "^1.1.1",
     "ejs": "^3.1.6",
     "got": "^11.8.1",
     "remark": "^13.0.0",

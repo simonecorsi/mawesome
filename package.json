@@ -58,7 +58,7 @@
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/exec": "^1.0.4",
-    "ejs": "^3.1.5",
+    "ejs": "^3.1.6",
     "got": "^11.8.1",
     "remark": "^13.0.0",
     "remark-toc": "^7.0.0"

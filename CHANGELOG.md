@@ -1,3 +1,15 @@
+# [1.1.0-next.1](https://github.com/simonecorsi/mawesome/compare/v1.0.45...v1.1.0-next.1) (2022-04-13)
+
+
+### Bug Fixes
+
+* pre-tags ([602befc](https://github.com/simonecorsi/mawesome/commit/602befcb5494b5bfd74d2333899311b81ea9da6d))
+
+
+### Features
+
+* **template:** adds templates ([791de9a](https://github.com/simonecorsi/mawesome/commit/791de9ab504de50e2e9cb031b9e373d7cc0589c0)), closes [#14](https://github.com/simonecorsi/mawesome/issues/14)
+
 ## <small>1.0.45 (2022-01-17)</small>
 
 - build(deps): bump shelljs from 0.8.4 to 0.8.5 ([1da350a](https://github.com/simonecorsi/mawesome/commit/1da350a))

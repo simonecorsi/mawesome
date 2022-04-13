@@ -1,4 +1,5 @@
 import * as core from '@actions/core';
+import { readdir, readFile } from 'fs/promises';
 
 import {
   renderer,
@@ -27,11 +28,25 @@ export async function main(): Promise<any> {
     {}
   );
 
-  const rendered = await renderer({
-    username: REPO_USERNAME,
-    stars: Object.entries(sortedByLanguages),
-    updatedAt: Date.now(),
-  });
+  // get template if found in the repo
+  let template;
+  try {
+    const dir = await readdir('./');
+    core.info(dir.join('\n'));
+    template = await readFile('TEMPLATE.ejs', 'utf8');
+    core.info(template);
+  } catch {
+    core.warning("Couldn't find template file, using default");
+  }
+
+  const rendered = await renderer(
+    {
+      username: REPO_USERNAME,
+      stars: Object.entries(sortedByLanguages),
+      updatedAt: Date.now(),
+    },
+    template
+  );
 
   const markdown: string = await generateMd(rendered);
 

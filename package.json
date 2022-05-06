@@ -59,7 +59,7 @@
   "dependencies": {
     "@actions/core": "^1.8.0",
     "@actions/exec": "^1.1.1",
-    "ejs": "^3.1.6",
+    "ejs": "^3.1.7",
     "got": "^11.8.1",
     "remark": "^13.0.0",
     "remark-toc": "^7.0.0"

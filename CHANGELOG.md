@@ -1,3 +1,10 @@
+# [1.1.0-next.2](https://github.com/simonecorsi/mawesome/compare/v1.1.0-next.1...v1.1.0-next.2) (2022-05-09)
+
+
+### Features
+
+* using gh-star-fetch ([a8b6577](https://github.com/simonecorsi/mawesome/commit/a8b657735b9879636cc039d79fddcdca33ccf38e))
+
 # [1.1.0-next.1](https://github.com/simonecorsi/mawesome/compare/v1.0.45...v1.1.0-next.1) (2022-04-13)
 
 

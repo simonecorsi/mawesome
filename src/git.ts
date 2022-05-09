@@ -34,28 +34,26 @@ class Git {
     return isShallow.trim().replace('\n', '') === 'true';
   };
 
-  exec = (command: string): Promise<string> => {
-    return new Promise(async (resolve, reject) => {
-      let execOutput = '';
+  async exec(command: string): Promise<string> {
+    let execOutput = '';
 
-      const options = {
-        listeners: {
-          stdout: (data: Buffer) => {
-            execOutput += data.toString();
-          },
+    const options = {
+      listeners: {
+        stdout: (data: Buffer) => {
+          execOutput += data.toString();
         },
-      };
+      },
+    };
 
-      const exitCode = await exec.exec(`git ${command}`, undefined, options);
+    const exitCode = await exec.exec(`git ${command}`, undefined, options);
 
-      if (exitCode === 0) {
-        return resolve(execOutput);
-      } else {
-        core.error(`Command "git ${command}" exited with code ${exitCode}.`);
-        return reject(`Command "git ${command}" exited with code ${exitCode}.`);
-      }
-    });
-  };
+    if (exitCode === 0) {
+      return execOutput;
+    } else {
+      core.error(`Command "git ${command}" exited with code ${exitCode}.`);
+      throw new Error(`Command "git ${command}" exited with code ${exitCode}.`);
+    }
+  }
 
   config = (prop: string, value: string) =>
     this.exec(`config ${prop} "${value}"`);

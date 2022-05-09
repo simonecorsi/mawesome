@@ -12,8 +12,20 @@ inputs:
     required: true
   github-name:
     description: 'Name shown in the commit'
+    default: 'GitHub Actions'
+    required: false
   github-email:
     description: 'Email shown in the commit'
+    default: 'actions@users.noreply.github.com'
+    required: false
+  template-path:
+    required: false
+    description: 'EJS template path relative to project root directory'
+    default: 'TEMPLATE.ejs'
+  output-filename:
+    description: 'The output file name, default to README.md'
+    required: false
+    default: 'README.md'
 runs:
   using: 'node12'
   main: 'index.js'

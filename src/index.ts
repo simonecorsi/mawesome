@@ -64,8 +64,9 @@ export async function run(): Promise<any> {
 
 const catchAll = (info: any) => {
   core.setFailed(`#catchAll: ${info}`);
+  core.error(info);
 };
 process.on('unhandledRejection', catchAll);
 process.on('uncaughtException', catchAll);
 
-run();
+run().catch(core.error);

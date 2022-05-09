@@ -1,5 +1,6 @@
 import * as core from '@actions/core';
 import { readdir, readFile } from 'fs/promises';
+import ghStarFetch from 'gh-star-fetch';
 
 import {
   renderer,
@@ -7,34 +8,25 @@ import {
   generateMd,
   pushNewFiles,
   MARKDOWN_FILENAME,
-  apiGetStar,
 } from './helpers';
+import MD_TEMPLATE from './template';
 
-import type { SortedLanguageList, Stars, Star } from './types';
+export async function main() {
+  const sortedByLanguages = await ghStarFetch({
+    accessToken: core.getInput('api-token', { required: true }),
+    compactByLanguage: true,
+  });
 
-export async function main(): Promise<any> {
-  const results: Stars = await apiGetStar();
-
-  const sortedByLanguages = results.reduce(
-    (acc: SortedLanguageList, val: Star) => {
-      const language = val.language || 'generic';
-      if (!acc[language]) {
-        acc[language] = [val];
-      } else {
-        acc[language].push(val);
-      }
-      return acc;
-    },
-    {}
-  );
+  // set default template
+  let template = MD_TEMPLATE;
 
   // get template if found in the repo
-  let template;
+  const customTemplatePath = core.getInput('template-path');
+  core.info(`check if customTemplatePath: ${customTemplatePath} exists`);
   try {
     const dir = await readdir('./');
     core.info(dir.join('\n'));
     template = await readFile('TEMPLATE.ejs', 'utf8');
-    core.info(template);
   } catch {
     core.warning("Couldn't find template file, using default");
   }

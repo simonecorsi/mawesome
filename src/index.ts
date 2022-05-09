@@ -12,11 +12,6 @@ import {
 import MD_TEMPLATE from './template';
 
 export async function main() {
-  const sortedByLanguages = await ghStarFetch({
-    accessToken: core.getInput('api-token', { required: true }),
-    compactByLanguage: true,
-  });
-
   // set default template
   let template = MD_TEMPLATE;
 
@@ -30,6 +25,11 @@ export async function main() {
   } catch {
     core.warning("Couldn't find template file, using default");
   }
+
+  const sortedByLanguages = await ghStarFetch({
+    accessToken: core.getInput('api-token', { required: true }),
+    compactByLanguage: true,
+  });
 
   const rendered = await renderer(
     {

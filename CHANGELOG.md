@@ -1,3 +1,30 @@
+# [2.0.0](https://github.com/simonecorsi/mawesome/compare/v1.0.45...v2.0.0) (2022-05-11)
+
+
+### Bug Fixes
+
+* fixes default template path ([6cd9c30](https://github.com/simonecorsi/mawesome/commit/6cd9c30b20acb0789668b9fd4cdbace2cb52d3ce))
+* fixes tsc build ([ec10b79](https://github.com/simonecorsi/mawesome/commit/ec10b79a91bc5894d35b80026d3e216420e0721a))
+* normalize template file loadup ([445f562](https://github.com/simonecorsi/mawesome/commit/445f562fb50567d995f0d080d4267fc8d494731b))
+* pre-tags ([d1d4edd](https://github.com/simonecorsi/mawesome/commit/d1d4edd104affc69984905c8408e859c25c58443))
+* removes unused tests ([a141d23](https://github.com/simonecorsi/mawesome/commit/a141d23972c31b3dbd7e9841168219ad42fa7a18))
+* reworking files ([19c4c8f](https://github.com/simonecorsi/mawesome/commit/19c4c8f761b244ddccbc445cc34078bf932559d2))
+* updates gh-star-fetch ([3ec4b7c](https://github.com/simonecorsi/mawesome/commit/3ec4b7cd53c1fe885a51fb64279047a201d535dc))
+
+
+### Features
+
+* release major ([51a4359](https://github.com/simonecorsi/mawesome/commit/51a4359d983be4c842410f0c62104fca1b28252f))
+* update to node16 ([e1f37af](https://github.com/simonecorsi/mawesome/commit/e1f37af978ebcb7f770949476ac7d6bc788a1fc2))
+* updates deps ([7ade95d](https://github.com/simonecorsi/mawesome/commit/7ade95df8566a59145652165400cddfd1afa4bed))
+* using gh-star-fetch ([346ba5d](https://github.com/simonecorsi/mawesome/commit/346ba5d4b7ba6a71bab99f2dbe3c2d010beb67d5))
+* **template:** adds templates ([2c742b8](https://github.com/simonecorsi/mawesome/commit/2c742b820558fd715de987178303c460f5871c29)), closes [#14](https://github.com/simonecorsi/mawesome/issues/14)
+
+
+### BREAKING CHANGES
+
+* refactored code
+
 # [1.1.0-next.2](https://github.com/simonecorsi/mawesome/compare/v1.1.0-next.1...v1.1.0-next.2) (2022-05-09)
 
 

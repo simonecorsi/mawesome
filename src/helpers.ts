@@ -1,11 +1,9 @@
 import fs from 'fs';
 import ejs from 'ejs';
 import * as core from '@actions/core';
-import remark from 'remark';
+import { remark } from 'remark';
 import toc from 'remark-toc';
 import git from './git';
-
-import type { PaginationLink, ApiGetStarResponse, Stars, Star } from './types';
 
 export const REPO_USERNAME = process.env.GITHUB_REPOSITORY?.split('/')[0];
 export const API_STARRED_URL = `${process.env.GITHUB_API_URL}/users/${REPO_USERNAME}/starred`;

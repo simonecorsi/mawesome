@@ -17,12 +17,11 @@ export async function main() {
 
   // get template if found in the repo
   const customTemplatePath = core.getInput('template-path');
-  console.log(`check if customTemplatePath: ${customTemplatePath} exists`);
+  core.info(`check if customTemplatePath: ${customTemplatePath} exists`);
   try {
-    const dir = await readdir('./');
     template = await readFile(customTemplatePath, 'utf8');
   } catch {
-    console.log("Couldn't find template file, using default");
+    core.info("Couldn't find template file, using default");
   }
 
   const sortedByLanguages = await ghStarFetch({

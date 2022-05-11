@@ -3,24 +3,6 @@ name: Release
 on: [workflow_dispatch]
 
 jobs:
-  test:
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        node-version: [16.x]
-
-    runs-on: ${{ matrix.os }}
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-
-      - name: Install dependencies
-        run: npm it
-
   release:
     needs: [test]
     runs-on: ubuntu-latest

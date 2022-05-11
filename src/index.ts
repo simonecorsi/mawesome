@@ -31,7 +31,6 @@ export async function main() {
     accessToken: core.getInput('api-token', { required: true }),
     compactByLanguage: true,
   });
-  console.log('sortedByLanguages :>> ', sortedByLanguages);
 
   const rendered = await renderer(
     {

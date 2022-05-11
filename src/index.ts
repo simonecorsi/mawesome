@@ -7,9 +7,9 @@ import {
   renderer,
   REPO_USERNAME,
   generateMd,
-  pushNewFiles,
   MARKDOWN_FILENAME,
 } from './helpers';
+import git from './git';
 
 export async function main() {
   // set default template
@@ -43,7 +43,7 @@ export async function main() {
 
   const markdown: string = await generateMd(rendered);
 
-  await pushNewFiles([
+  await git.pushNewFiles([
     {
       filename: MARKDOWN_FILENAME,
       data: markdown,
@@ -55,7 +55,7 @@ export async function main() {
   ]);
 }
 
-export async function run(): Promise<any> {
+export async function run(): Promise<void> {
   try {
     await main();
   } catch (error) {

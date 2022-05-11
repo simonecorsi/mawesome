@@ -2,10 +2,17 @@
 
 import * as core from '@actions/core';
 import * as exec from '@actions/exec';
+import fs from 'fs/promises';
 
 const { GITHUB_REPOSITORY, GITHUB_REF } = process.env;
 
 const branch = GITHUB_REF?.replace('refs/heads/', '');
+
+type File = {
+  filename: string;
+  data: string;
+};
+
 class Git {
   constructor() {
     const githubToken = core.getInput('github-token', { required: true });
@@ -89,6 +96,20 @@ class Git {
   updateOrigin = (repo: string) => this.exec(`remote set-url origin ${repo}`);
 
   createTag = (tag: string) => this.exec(`tag -a ${tag} -m "${tag}"`);
+
+  async pushNewFiles(files: File[] = []): Promise<any> {
+    if (!files.length) return;
+
+    await this.pull();
+
+    await Promise.all(
+      files.map(({ filename, data }) => fs.writeFile(filename, data))
+    );
+
+    await this.add(files.map(({ filename }) => filename));
+    await this.commit(`chore(updates): updated entries in files`);
+    await this.push();
+  }
 }
 
 export default new Git();

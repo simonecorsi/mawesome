@@ -20,8 +20,7 @@ export async function main() {
   console.log(`check if customTemplatePath: ${customTemplatePath} exists`);
   try {
     const dir = await readdir('./');
-    console.log(dir.join('\n'));
-    template = await readFile('TEMPLATE.ejs', 'utf8');
+    template = await readFile(customTemplatePath, 'utf8');
   } catch {
     console.log("Couldn't find template file, using default");
   }

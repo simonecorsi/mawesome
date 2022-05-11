@@ -7240,7 +7240,6 @@
       const parse_link_header_1 = __importDefault(__nccwpck_require__(1940));
       const client_1 = __nccwpck_require__(7094);
       function getNextPage({ next, last }) {
-        if (!next || !last) return null;
         if (!next?.page || !last?.page) return null;
         if (next.page === last.page) return null;
         return next.page;
@@ -7259,9 +7258,9 @@
             for (const record of body) {
               yield record;
             }
-            nextPage = getNextPage(
-              (0, parse_link_header_1.default)(headers.link)
-            );
+            const links = (0, parse_link_header_1.default)(headers.link);
+            if (!links) return; // exit if no page
+            nextPage = getNextPage(links);
             if (!opts.accessToken) {
               console.warn(
                 'No github access token provided, limiting call to first page to avoid rate limit ban'
@@ -7286,13 +7285,10 @@
         }
         const sorted = data.reduce((acc, val) => {
           const language = val.language || 'miscellaneous';
+          acc[language] ||= [];
           const parsed =
             typeof opts.transform !== 'function' ? val : opts.transform(val);
-          if (!acc[language]) {
-            acc[language] = [parsed];
-          } else {
-            acc[language].push(parsed);
-          }
+          acc[language].push(parsed);
           return acc;
         }, {});
         return sorted;
@@ -7347,10 +7343,10 @@
         const opts = Object.assign({}, DEFAULT_OPTIONS, options, {
           http,
         });
-        if (!options.username) {
+        if (!opts.username) {
           try {
             const { login } = await http.get('user').json();
-            options.username = login;
+            opts.username = login;
           } catch {
             throw new Error('[options.username] is not set');
           }
@@ -15038,6 +15034,7 @@ An error to be thrown when given an unsupported protocol.
             accessToken: core.getInput('api-token', { required: true }),
             compactByLanguage: true,
           });
+          console.log('sortedByLanguages :>> ', sortedByLanguages);
           const rendered = yield (0, helpers_1.renderer)(
             {
               username: helpers_1.REPO_USERNAME,
@@ -30410,25 +30407,29 @@ An error to be thrown when given an unsupported protocol.
     },
 
     /******/
-  }; // The module cache
+  };
   /************************************************************************/
-  /******/ /******/ var __webpack_module_cache__ = {}; // The require function
+  /******/ // The module cache
+  /******/ var __webpack_module_cache__ = {};
   /******/
-  /******/ /******/ function __nccwpck_require__(moduleId) {
+  /******/ // The require function
+  /******/ function __nccwpck_require__(moduleId) {
     /******/ // Check if module is in cache
     /******/ var cachedModule = __webpack_module_cache__[moduleId];
     /******/ if (cachedModule !== undefined) {
       /******/ return cachedModule.exports;
       /******/
-    } // Create a new module (and put it into the cache)
-    /******/ /******/ var module = (__webpack_module_cache__[moduleId] = {
+    }
+    /******/ // Create a new module (and put it into the cache)
+    /******/ var module = (__webpack_module_cache__[moduleId] = {
       /******/ // no module.id needed
       /******/ // no module.loaded needed
       /******/ exports: {},
       /******/
-    }); // Execute the module function
+    });
     /******/
-    /******/ /******/ var threw = true;
+    /******/ // Execute the module function
+    /******/ var threw = true;
     /******/ try {
       /******/ __webpack_modules__[moduleId].call(
         module.exports,
@@ -30441,14 +30442,16 @@ An error to be thrown when given an unsupported protocol.
     } finally {
       /******/ if (threw) delete __webpack_module_cache__[moduleId];
       /******/
-    } // Return the exports of the module
+    }
     /******/
-    /******/ /******/ return module.exports;
+    /******/ // Return the exports of the module
+    /******/ return module.exports;
     /******/
-  } /* webpack/runtime/define property getters */
+  }
   /******/
   /************************************************************************/
-  /******/ /******/ (() => {
+  /******/ /* webpack/runtime/define property getters */
+  /******/ (() => {
     /******/ // define getter functions for harmony exports
     /******/ __nccwpck_require__.d = (exports, definition) => {
       /******/ for (var key in definition) {
@@ -30467,15 +30470,17 @@ An error to be thrown when given an unsupported protocol.
       /******/
     };
     /******/
-  })(); /* webpack/runtime/hasOwnProperty shorthand */
+  })();
   /******/
-  /******/ /******/ (() => {
+  /******/ /* webpack/runtime/hasOwnProperty shorthand */
+  /******/ (() => {
     /******/ __nccwpck_require__.o = (obj, prop) =>
       Object.prototype.hasOwnProperty.call(obj, prop);
     /******/
-  })(); /* webpack/runtime/make namespace object */
+  })();
   /******/
-  /******/ /******/ (() => {
+  /******/ /* webpack/runtime/make namespace object */
+  /******/ (() => {
     /******/ // define __esModule on exports
     /******/ __nccwpck_require__.r = (exports) => {
       /******/ if (typeof Symbol !== 'undefined' && Symbol.toStringTag) {
@@ -30488,16 +30493,19 @@ An error to be thrown when given an unsupported protocol.
       /******/
     };
     /******/
-  })(); /* webpack/runtime/compat */
+  })();
   /******/
-  /******/ /******/
+  /******/ /* webpack/runtime/compat */
+  /******/
   /******/ if (typeof __nccwpck_require__ !== 'undefined')
-    __nccwpck_require__.ab = __dirname + '/'; // startup // Load entry module and return exports // This entry module is referenced by other modules so it can't be inlined
+    __nccwpck_require__.ab = __dirname + '/';
   /******/
   /************************************************************************/
   /******/
-  /******/ /******/ /******/ /******/ var __webpack_exports__ =
-    __nccwpck_require__(6144);
+  /******/ // startup
+  /******/ // Load entry module and return exports
+  /******/ // This entry module is referenced by other modules so it can't be inlined
+  /******/ var __webpack_exports__ = __nccwpck_require__(6144);
   /******/ module.exports = __webpack_exports__;
   /******/
   /******/

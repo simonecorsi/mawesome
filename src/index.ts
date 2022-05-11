@@ -14,7 +14,7 @@ import git from './git';
 export async function main() {
   // set default template
   let template = await readFile(
-    path.resolve(__dirname, './TEMPLATE.md'),
+    path.resolve(__dirname, './TEMPLATE.ejs'),
     'utf8'
   );
 

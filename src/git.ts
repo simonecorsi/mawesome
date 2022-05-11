@@ -15,7 +15,7 @@ type File = {
 
 class Git {
   constructor() {
-    const githubToken = core.getInput('github-token', { required: true });
+    const githubToken = core.getInput('api-token', { required: true });
     core.setSecret(githubToken);
 
     const githubName = core.getInput('github-name') || 'GitHub Actions';

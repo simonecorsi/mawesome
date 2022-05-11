@@ -4,9 +4,6 @@ branding:
   icon: align-justify
   color: yellow
 inputs:
-  github-token:
-    description: 'Github token'
-    required: true
   api-token:
     description: 'Personal API Token'
     required: true

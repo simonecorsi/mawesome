@@ -12,6 +12,7 @@ You can see an example of the output at my own [simonecorsi/awesome](https://git
   - [Requirements](#requirements)
   - [Configuration](#configuration)
     - [`api-token`](#api-token)
+    - [`template-path`](#template-path)
 - [Example workflow](#example-workflow)
 
 <!-- tocstop -->
@@ -27,20 +28,26 @@ You can see an example of the output at my own [simonecorsi/awesome](https://git
 
 The service can be configured setting the appropriate environment variables or writing an `.env` file.
 
-| Variable          | Description                                                          | Default                          |
-| ----------------- | -------------------------------------------------------------------- | -------------------------------- |
-| `api-token`       | Personal github api token.                                           | `${{ secrets.API_TOKEN }}`       |
-| `github-token`    | Action Token                                                         | `${{ secrets.GITHUB_TOKEN }}`    |
-| `github-name`     | Name used for the commit, default to action                          | Github Action                    |
-| `github-email`    | email used for commit, default to action                             | actions@users.noreply.github.com |
-| `template-path`   | Custom template path relative to your project directory (uses: [EJS](https://ejs.co/) template engine) | [TEMPLATE.ejs](./TEMPLATE.ejs)   |
-| `output-filename` | Output filename                                                      | `README.md`                      |
+| Variable          | Description                                              | Default                          |
+| ----------------- | -------------------------------------------------------- | -------------------------------- |
+| `api-token`       | Personal github api token.                               | `${{ secrets.API_TOKEN }}`       |
+| `github-token`    | This is the default github token used to commit and push | `${{ secrets.GITHUB_TOKEN }}`    |
+| `github-name`     | Name used for the commit                                 | Github Action                    |
+| `github-email`    | email used for commit                                    | actions@users.noreply.github.com |
+| `template-path`   | Custom `README.md` template, [read more](#template-path) |
+| `output-filename` | Output filename                                          | `README.md`                      |
 
 #### `api-token`
 
 The Personal API Access Token is mandatory to fetch stars from the API without incurring in Rate Limits.
 
 You'll have to generate a [personal api token](https://github.com/settings/tokens/new) and then add
+
+#### `template-path`
+
+If you don't like the output (default example [here](./TEMPLATE.ejs) ), you can provide your custom template that will be rendered using [EJS](https://ejs.co/) template engine.
+
+Path provided is relative to your current repository directory, if file is not found it will default.
 
 ## Example workflow
 

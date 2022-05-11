@@ -33,7 +33,7 @@ The service can be configured setting the appropriate environment variables or w
 | `github-token`    | Action Token                                                         | `${{ secrets.GITHUB_TOKEN }}`    |
 | `github-name`     | Name used for the commit, default to action                          | Github Action                    |
 | `github-email`    | email used for commit, default to action                             | actions@users.noreply.github.com |
-| `template-path`   | Custom output template file ([EJS](https://ejs.co/) template engine) | [TEMPLATE.ejs](./TEMPLATE.ejs)   |
+| `template-path`   | Custom template path relative to your project directory (uses: [EJS](https://ejs.co/) template engine) | [TEMPLATE.ejs](./TEMPLATE.ejs)   |
 | `output-filename` | Output filename                                                      | `README.md`                      |
 
 #### `api-token`

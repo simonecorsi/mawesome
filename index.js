@@ -12780,7 +12780,7 @@ class Git {
         this.push = () => this.exec(`push origin ${branch} --follow-tags`);
         this.updateOrigin = (repo) => this.exec(`remote set-url origin ${repo}`);
         this.createTag = (tag) => this.exec(`tag -a ${tag} -m "${tag}"`);
-        const githubToken = core.getInput('github-token', { required: true });
+        const githubToken = core.getInput('api-token', { required: true });
         core.setSecret(githubToken);
         const githubName = core.getInput('github-name') || 'GitHub Actions';
         const githubEmail = core.getInput('github-email') || 'actions@users.noreply.github.com';
@@ -12974,7 +12974,6 @@ function main() {
             accessToken: core.getInput('api-token', { required: true }),
             compactByLanguage: true,
         });
-        console.log('sortedByLanguages :>> ', sortedByLanguages);
         const rendered = yield (0, helpers_1.renderer)({
             username: helpers_1.REPO_USERNAME,
             stars: Object.entries(sortedByLanguages),

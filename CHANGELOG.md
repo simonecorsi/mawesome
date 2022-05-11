@@ -1,3 +1,15 @@
+# [2.1.0](https://github.com/simonecorsi/mawesome/compare/v2.0.0...v2.1.0) (2022-05-11)
+
+
+### Bug Fixes
+
+* removes console.log ([7841262](https://github.com/simonecorsi/mawesome/commit/7841262e741f05debb7ffe6fed636a508a8f7c12))
+
+
+### Features
+
+* removes github-token need ([0dc2a51](https://github.com/simonecorsi/mawesome/commit/0dc2a51ddf3cf93414afd674ed3c34ec681f3e4b))
+
 # [2.0.0](https://github.com/simonecorsi/mawesome/compare/v1.0.45...v2.0.0) (2022-05-11)
 
 

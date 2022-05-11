@@ -1,5 +1,6 @@
+import path from 'path';
 import * as core from '@actions/core';
-import { readdir, readFile } from 'fs/promises';
+import { readFile } from 'fs/promises';
 import ghStarFetch from 'gh-star-fetch';
 
 import {
@@ -9,11 +10,13 @@ import {
   pushNewFiles,
   MARKDOWN_FILENAME,
 } from './helpers';
-import MD_TEMPLATE from './template';
 
 export async function main() {
   // set default template
-  let template = MD_TEMPLATE;
+  let template = await readFile(
+    path.resolve(__dirname, './TEMPLATE.md'),
+    'utf8'
+  );
 
   // get template if found in the repo
   const customTemplatePath = core.getInput('template-path');

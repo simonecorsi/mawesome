@@ -11,7 +11,7 @@ jobs:
           node-version: 16
       - uses: actions/checkout@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
 
       - name: Install dependencies
         run: npm i
@@ -22,6 +22,6 @@ jobs:
       - name: Semantic release
         uses: codfish/semantic-release-action@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           GIT_AUTHOR_NAME: '${{ github.actor }}'
           GIT_COMMITTER_NAME: '${{ github.actor }}'

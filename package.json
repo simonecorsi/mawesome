@@ -6,13 +6,10 @@
   "author": "Simone Corsi<simonecorsi.dev@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "nyc --reporter=lcov --reporter=text-summary ava -s -v",
-    "test:watch": "ava -w",
     "style:lint": "eslint src --ext .ts",
     "style:prettier": "prettier \"src/**/*.ts\" --list-different --write",
     "build": "./node_modules/.bin/ncc build src/index.ts -o ./",
     "dev": "ts-node-dev src/index.ts",
-    "prerelease": "npm run build",
     "prepare": "node prepare.js || echo 'Skipping prepare'"
   },
   "keywords": [
@@ -42,7 +39,6 @@
     "@typescript-eslint/eslint-plugin": "^5.23.0",
     "@typescript-eslint/parser": "^5.23.0",
     "@vercel/ncc": "^0.33.4",
-    "ava": "^4.2.0",
     "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-node": "^11.1.0",
@@ -60,7 +56,7 @@
     "@actions/core": "^1.8.0",
     "@actions/exec": "^1.1.1",
     "ejs": "^3.1.7",
-    "gh-star-fetch": "^1.1.0",
+    "gh-star-fetch": "^1.2.0",
     "got": "^11.8.1",
     "remark": "^14.0.2",
     "remark-toc": "^8.0.1"

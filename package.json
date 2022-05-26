@@ -22,7 +22,7 @@
     "javascript"
   ],
   "devDependencies": {
-    "@commitlint/cli": "^17.0.0",
+    "@commitlint/cli": "^17.0.1",
     "@commitlint/config-conventional": "^17.0.0",
     "@octokit/rest": "^18.12.0",
     "@octokit/types": "^6.2.1",

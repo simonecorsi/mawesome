@@ -1,3 +1,18 @@
+# [2.2.0](https://github.com/simonecorsi/mawesome/compare/v2.1.0...v2.2.0) (2022-07-06)
+
+
+### Bug Fixes
+
+* compact by topic check ([49f6687](https://github.com/simonecorsi/mawesome/commit/49f66875e34ef186f183e370979ef751694d08b2))
+* compact by topic check ([01cfb39](https://github.com/simonecorsi/mawesome/commit/01cfb39a41a2f60c709fd6dd6a46073149d96c20))
+* docs ([4d7eef0](https://github.com/simonecorsi/mawesome/commit/4d7eef0991d896027ac464a40edfc564ced6bdd2))
+
+
+### Features
+
+* adds compacted by topics ([30fa351](https://github.com/simonecorsi/mawesome/commit/30fa351b37a04357303f59c79a90f92219f8072c))
+* adds compacted by topics ([9dfa1f3](https://github.com/simonecorsi/mawesome/commit/9dfa1f3dae6c69033c682211c0e6bd9dc5a81eaf))
+
 # [2.1.0](https://github.com/simonecorsi/mawesome/compare/v2.0.0...v2.1.0) (2022-05-11)
 
 

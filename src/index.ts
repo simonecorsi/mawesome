@@ -60,11 +60,7 @@ export async function main() {
     }
   );
 
-  const shouldCompactByTopic =
-    !!core.getInput('compact-by-topic') ||
-    core.getInput('compact-by-topic') === 'true';
-
-  if (shouldCompactByTopic) {
+  if (core.getInput('compact-by-topic') === 'true') {
     const compactedByTopic = compactByTopic(results);
     const byTopic = await renderer(
       {

@@ -28,13 +28,14 @@ You can see an example of the output at my own [simonecorsi/awesome](https://git
 
 The service can be configured setting the appropriate environment variables or writing an `.env` file.
 
-| Variable          | Description                                                         | Default                          |
-| ----------------- | ------------------------------------------------------------------- | -------------------------------- |
-| `api-token`       | Personal Token is used to avoid rate limit, [read more](#api-token) | `${{ secrets.API_TOKEN }}`       |
-| `github-name`     | Name used for the commit                                            | Github Action                    |
-| `github-email`    | email used for commit                                               | actions@users.noreply.github.com |
-| `template-path`   | Custom `README.md` template, [read more](#template-path)            |
-| `output-filename` | Output filename                                                     | `README.md`                      |
+| Variable           | Description                                                         | Default                          |
+| ------------------ | ------------------------------------------------------------------- | -------------------------------- |
+| `api-token`        | Personal Token is used to avoid rate limit, [read more](#api-token) | `${{ secrets.API_TOKEN }}`       |
+| `compact-by-topic` | Render another list in `TOPICS.md` compacted by github topics       | `'false'`                        |
+| `github-name`      | Name used for the commit                                            | Github Action                    |
+| `github-email`     | email used for commit                                               | actions@users.noreply.github.com |
+| `template-path`    | Custom `README.md` template, [read more](#template-path)            |
+| `output-filename`  | Output filename                                                     | `README.md`                      |
 
 #### `api-token`
 

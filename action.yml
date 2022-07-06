@@ -4,6 +4,10 @@ branding:
   icon: align-justify
   color: yellow
 inputs:
+  compact-by-topic:
+    description: 'Generate another page with output compacted by github topics'
+    default: 'false'
+    required: false
   api-token:
     description: 'Personal API Token'
     required: true

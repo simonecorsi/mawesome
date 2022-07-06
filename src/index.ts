@@ -1,7 +1,11 @@
 import path from 'path';
 import * as core from '@actions/core';
 import { readFile } from 'fs/promises';
-import ghStarFetch from 'gh-star-fetch';
+import ghStarFetch, {
+  Options,
+  compactByLanguage,
+  compactByTopic,
+} from 'gh-star-fetch';
 
 import {
   renderer,
@@ -27,32 +31,56 @@ export async function main() {
     core.info("Couldn't find template file, using default");
   }
 
-  const sortedByLanguages = await ghStarFetch({
+  const opts: Partial<Options> = {
     accessToken: core.getInput('api-token', { required: true }),
-    compactByLanguage: true,
-  });
+  };
 
-  const rendered = await renderer(
+  const results = await ghStarFetch(opts);
+
+  const files = [];
+
+  const compactedByLanguage = compactByLanguage(results);
+  const byLanguage = await renderer(
     {
       username: REPO_USERNAME,
-      stars: Object.entries(sortedByLanguages),
+      stars: Object.entries(compactedByLanguage),
       updatedAt: Date.now(),
     },
     template
   );
 
-  const markdown: string = await generateMd(rendered);
-
-  await git.pushNewFiles([
+  files.push(
     {
       filename: MARKDOWN_FILENAME,
-      data: markdown,
+      data: await generateMd(byLanguage),
     },
     {
       filename: 'data.json',
-      data: JSON.stringify(sortedByLanguages, null, 2),
-    },
-  ]);
+      data: JSON.stringify(compactedByLanguage, null, 2),
+    }
+  );
+
+  const shouldCompactByTopic =
+    !!core.getInput('compact-by-topic') ||
+    core.getInput('compact-by-topic') === 'true';
+
+  if (shouldCompactByTopic) {
+    const compactedByTopic = compactByTopic(results);
+    const byTopic = await renderer(
+      {
+        username: REPO_USERNAME,
+        stars: Object.entries(compactedByTopic),
+        updatedAt: Date.now(),
+      },
+      template
+    );
+    files.push({
+      filename: 'TOPICS.md',
+      data: await generateMd(byTopic),
+    });
+  }
+
+  await git.pushNewFiles(files);
 }
 
 export async function run(): Promise<void> {

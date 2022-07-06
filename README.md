@@ -12,6 +12,7 @@ You can see an example of the output at my own [simonecorsi/awesome](https://git
   - [Requirements](#requirements)
   - [Configuration](#configuration)
     - [`api-token`](#api-token)
+    - [`compact-by-topic`](#compact-by-topic)
     - [`template-path`](#template-path)
 - [Example workflow](#example-workflow)
 
@@ -42,6 +43,10 @@ The service can be configured setting the appropriate environment variables or w
 The Personal API Access Token is mandatory to fetch stars from the API without incurring in Rate Limits.
 
 You'll have to generate a [personal api token](https://github.com/settings/tokens/new) and then add
+
+#### `compact-by-topic`
+
+If `compact-by-topic` is `'true'` it will generate another markdown file `TOPICS.md` whith all stars compacted by their github topics, be aware that this list will be bigger since data is duplicated.
 
 #### `template-path`
 

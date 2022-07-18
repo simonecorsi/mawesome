@@ -21,12 +21,6 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Run
-        run: npm run start &
-
-      - name: Check
-        run: curl -f -LI http://localhost:3000
-
   dependabot:
     needs: [check]
     runs-on: ubuntu-latest

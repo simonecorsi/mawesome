@@ -5,6 +5,9 @@
   "main": "index.js",
   "author": "Simone Corsi<simonecorsi.dev@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "scripts": {
     "style:lint": "eslint src --ext .ts",
     "style:prettier": "prettier \"src/**/*.ts\" --list-different --write",

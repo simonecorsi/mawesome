@@ -52,7 +52,7 @@ If `compact-by-topic` is `'true'` it will generate another markdown file `TOPICS
 
 If you don't like the output (default example [here](./TEMPLATE.ejs) ), you can provide your custom template that will be rendered using [EJS](https://ejs.co/) template engine.
 
-Path provided is relative to your current repository directory, if file is not found it will default.
+**Path provided is relative to your current repository directory, if file is not found it will default.**
 
 ## Example workflow
 

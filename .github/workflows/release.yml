@@ -21,7 +21,7 @@ jobs:
         run: npm run build
 
       - name: Semantic release
-        uses: codfish/semantic-release-action@v1
+        uses: codfish/semantic-release-action@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           GIT_AUTHOR_NAME: '${{ github.actor }}'

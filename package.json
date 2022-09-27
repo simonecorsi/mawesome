@@ -36,7 +36,7 @@
     "@types/got": "^9.6.12",
     "@types/node": "^18.7.21",
     "@types/sinon": "^10.0.13",
-    "@typescript-eslint/eslint-plugin": "^5.38.0",
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
     "@typescript-eslint/parser": "^5.38.0",
     "@vercel/ncc": "^0.34.0",
     "eslint": "^8.24.0",

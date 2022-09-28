@@ -1,15 +1,20 @@
 {
   "name": "mawesome",
-  "version": "2.0.0-0",
+  "version": "2.2.0",
   "description": "Generate awesome list from user starred repositories",
-  "main": "index.js",
   "author": "Simone Corsi<simonecorsi.dev@gmail.com>",
   "license": "MIT",
+  "type": "module",
+  "exports": "./index.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
+    "prebuild": "rm -f index.js tsconfig.tsbuildinfo",
+    "build": "tsup src/index.ts --format esm -d .",
     "style:lint": "eslint src --ext .ts",
     "style:prettier": "prettier \"src/**/*.ts\" --list-different --write",
-    "build": "./node_modules/.bin/ncc build src/index.ts -o ./",
-    "dev": "ts-node-dev src/index.ts",
+    "dev": "tsup src/index.ts --watch --format esm",
     "prepare": "node prepare.js || echo 'Skipping prepare'"
   },
   "keywords": [
@@ -35,10 +40,8 @@
     "@types/ejs": "^3.1.1",
     "@types/got": "^9.6.12",
     "@types/node": "^18.7.23",
-    "@types/sinon": "^10.0.13",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
     "@typescript-eslint/parser": "^5.38.1",
-    "@vercel/ncc": "^0.34.0",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-node": "^11.1.0",
@@ -48,8 +51,7 @@
     "markdown-toc": "^1.2.0",
     "nyc": "^15.0.1",
     "prettier": "^2.7.1",
-    "sinon": "^14.0.0",
-    "ts-node-dev": "^2.0.0",
+    "tsup": "^6.2.3",
     "typescript": "^4.8.4"
   },
   "dependencies": {
@@ -57,12 +59,12 @@
     "@actions/exec": "^1.1.1",
     "ejs": "^3.1.8",
     "gh-star-fetch": "^1.5.0",
-    "got": "^11.8.1",
+    "got": "^12.5.1",
     "remark": "^14.0.2",
     "remark-toc": "^8.0.1"
   },
   "volta": {
-    "node": "16.14.2",
+    "node": "18.9.1",
     "npm": "8.6.0"
   }
 }

@@ -11,7 +11,8 @@
   },
   "scripts": {
     "prebuild": "rm -f index.js tsconfig.tsbuildinfo",
-    "build": "tsup src/index.ts --format esm -d .",
+    "build": "tsup src/index.ts --format esm",
+    "postbuild": "./node_modules/.bin/ncc build index.js -o ./",
     "style:lint": "eslint src --ext .ts",
     "style:prettier": "prettier \"src/**/*.ts\" --list-different --write",
     "dev": "tsup src/index.ts --watch --format esm",
@@ -42,6 +43,7 @@
     "@types/node": "^18.7.23",
     "@typescript-eslint/eslint-plugin": "^5.38.1",
     "@typescript-eslint/parser": "^5.38.1",
+    "@vercel/ncc": "^0.34.0",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-node": "^11.1.0",

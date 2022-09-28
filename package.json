@@ -11,7 +11,7 @@
   },
   "scripts": {
     "prebuild": "rm -f index.js tsconfig.tsbuildinfo",
-    "build": "tsup src/index.ts --format esm",
+    "build": "tsup src/index.ts --format esm -d .",
     "postbuild": "./node_modules/.bin/ncc build index.js -o ./",
     "style:lint": "eslint src --ext .ts",
     "style:prettier": "prettier \"src/**/*.ts\" --list-different --write",

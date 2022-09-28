@@ -14,11 +14,15 @@ import {
   MARKDOWN_FILENAME,
 } from './helpers';
 import git from './git';
+import { fileURLToPath } from 'url';
 
 export async function main() {
   // set default template
   let template = await readFile(
-    path.resolve(__dirname, './TEMPLATE.ejs'),
+    path.resolve(
+      path.dirname(fileURLToPath(import.meta.url)),
+      './TEMPLATE.ejs'
+    ),
     'utf8'
   );
 

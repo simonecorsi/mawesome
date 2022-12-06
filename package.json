@@ -37,7 +37,7 @@
     "@types/node": "^18.11.10",
     "@types/sinon": "^10.0.13",
     "@typescript-eslint/eslint-plugin": "^5.45.1",
-    "@typescript-eslint/parser": "^5.45.0",
+    "@typescript-eslint/parser": "^5.45.1",
     "@vercel/ncc": "^0.34.0",
     "eslint": "^8.29.0",
     "eslint-config-prettier": "^8.5.0",

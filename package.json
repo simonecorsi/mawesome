@@ -25,7 +25,7 @@
     "@commitlint/cli": "^17.4.2",
     "@commitlint/config-conventional": "^17.4.2",
     "@octokit/rest": "^19.0.5",
-    "@octokit/types": "^6.41.0",
+    "@octokit/types": "^8.1.1",
     "@saithodev/semantic-release-backmerge": "^2.1.3",
     "@semantic-release/changelog": "^6.0.2",
     "@semantic-release/commit-analyzer": "^9.0.2",

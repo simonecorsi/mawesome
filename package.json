@@ -48,7 +48,7 @@
     "markdown-toc": "^1.2.0",
     "nyc": "^15.0.1",
     "prettier": "^2.8.8",
-    "sinon": "^15.0.4",
+    "sinon": "^15.1.0",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.0.4"
   },

@@ -28,7 +28,7 @@
     "@octokit/types": "^6.41.0",
     "@saithodev/semantic-release-backmerge": "^3.2.1",
     "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/commit-analyzer": "^10.0.1",
+    "@semantic-release/commit-analyzer": "^11.0.0",
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/github": "^9.0.4",
     "@semantic-release/release-notes-generator": "^11.0.4",

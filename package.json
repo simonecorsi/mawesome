@@ -44,7 +44,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.3",
-    "lint-staged": "^14.0.1",
+    "lint-staged": "^15.1.0",
     "markdown-toc": "^1.2.0",
     "nyc": "^15.0.1",
     "prettier": "^3.0.2",

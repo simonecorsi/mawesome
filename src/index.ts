@@ -87,7 +87,7 @@ export async function run(): Promise<void> {
   }
 }
 
-const catchAll = (info: any) => {
+const catchAll = (info: string) => {
   core.setFailed(`#catchAll: ${info}`);
   core.error(info);
 };

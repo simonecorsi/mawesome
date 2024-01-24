@@ -97,7 +97,7 @@ class Git {
 
   createTag = (tag: string) => this.exec(`tag -a ${tag} -m "${tag}"`);
 
-  async pushNewFiles(files: File[] = []): Promise<any> {
+  async pushNewFiles(files: File[] = []): Promise<unknown> {
     if (!files.length) return;
 
     await this.pull();

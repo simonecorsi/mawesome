@@ -7,7 +7,7 @@ export const REPO_USERNAME = process.env.GITHUB_REPOSITORY?.split('/')[0];
 export const API_STARRED_URL = `${process.env.GITHUB_API_URL}/users/${REPO_USERNAME}/starred`;
 
 export async function renderer(
-  data: { [key: string]: any },
+  data: { [key: string]: unknown },
   templateString: string
 ): Promise<string> {
   try {
@@ -26,9 +26,9 @@ export function generateMd(data: string): Promise<string> {
         if (error) {
           core.error('#generateMd');
           core.error(error);
-          return resolve('');
+          resolve('');
         }
-        return resolve(String(file));
+        resolve(String(file));
       });
   });
 }

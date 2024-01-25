@@ -26,7 +26,7 @@
     "@commitlint/config-conventional": "^18.5.0",
     "@octokit/rest": "^20.0.1",
     "@octokit/types": "^12.4.0",
-    "@saithodev/semantic-release-backmerge": "^3.2.1",
+    "@saithodev/semantic-release-backmerge": "^4.0.1",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/commit-analyzer": "^11.1.0",
     "@semantic-release/git": "^10.0.1",

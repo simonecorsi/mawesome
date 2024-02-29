@@ -23,7 +23,7 @@
   ],
   "devDependencies": {
     "@commitlint/cli": "^18.6.1",
-    "@commitlint/config-conventional": "^18.6.2",
+    "@commitlint/config-conventional": "^19.0.3",
     "@octokit/rest": "^20.0.2",
     "@octokit/types": "^12.6.0",
     "@saithodev/semantic-release-backmerge": "^4.0.1",
